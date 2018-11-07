@@ -21,18 +21,21 @@ public class Dashboard extends View {
     private static int ANGLE = 120;
     private static final float LENGTH = Utils.dp2px(100);
 
+
+    private int roate = 0;
+
     private PathEffect effect;
     Path dash = new Path();
 
     {
         paint.setStyle(Paint.Style.STROKE);
         paint.setStrokeWidth(Utils.dp2px(2));
-        dash.addRect(0,0,Utils.dp2px(2),Utils.dp2px(10),Path.Direction.CCW);
+        dash.addRect(0, 0, Utils.dp2px(2), Utils.dp2px(10), Path.Direction.CCW);
         Path arc = new Path();
-        arc.addArc(getWidth() / 2 - RADIUS, getHeight() / 2 - RADIUS, getWidth() / 2 + RADIUS , getHeight() / 2 + RADIUS, 90 + ANGLE / 2, 360 - ANGLE);
+        arc.addArc(getWidth() / 2 - RADIUS, getHeight() / 2 - RADIUS, getWidth() / 2 + RADIUS, getHeight() / 2 + RADIUS, 90 + ANGLE / 2, 360 - ANGLE);
 
-        PathMeasure pathMeasure = new PathMeasure(arc,false);
-        effect = new PathDashPathEffect(dash,(pathMeasure.getLength()-Utils.dp2px(2))/20,0,PathDashPathEffect.Style.ROTATE);
+        PathMeasure pathMeasure = new PathMeasure(arc, false);
+        effect = new PathDashPathEffect(dash, (pathMeasure.getLength() - Utils.dp2px(2)) / 20, 0, PathDashPathEffect.Style.ROTATE);
     }
 
     public Dashboard(Context context, @Nullable AttributeSet attrs) {
@@ -52,13 +55,17 @@ public class Dashboard extends View {
 
 
         //画指针 TODO : 坐标的计算
-        canvas.drawLine(getWidth()/2,getHeight()/2,
-                (float) Math.cos(Math.toRadians(5))*LENGTH + getWidth()/2,
-                (float) Math.sin(Math.toRadians(5))*LENGTH + getHeight()/2,paint
-                );
+        canvas.drawLine(getWidth() / 2, getHeight() / 2,
+                (float) Math.cos(Math.toRadians(roate)) * LENGTH + getWidth() / 2,
+                (float) Math.sin(Math.toRadians(roate)) * LENGTH + getHeight() / 2, paint
+        );
 
 
+    }
 
+    public void setRoate(int roate) {
+        this.roate = roate;
+        invalidate();
     }
 
     @Override
