@@ -6,7 +6,7 @@
                                              android:layout_height="match_parent"
                                              tools:context=".MainActivity">
 
-    <com.cheeath.pomelo.view.AvatarView
+    <com.cheeath.pomelo.view.SportView
 
         android:id="@+id/view"
         android:layout_width="match_parent"
