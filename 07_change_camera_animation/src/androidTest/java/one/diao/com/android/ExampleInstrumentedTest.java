@@ -1,4 +1,4 @@
-package one.diao.com.a07_change_camera_animation;
+package one.diao.com.android;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

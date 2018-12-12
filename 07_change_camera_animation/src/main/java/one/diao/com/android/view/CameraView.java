@@ -1,4 +1,4 @@
-package one.diao.com.a07_change_camera_animation.view;
+package one.diao.com.android.view;
 
 import android.content.Context;
 import android.graphics.Canvas;
@@ -15,8 +15,9 @@ public class CameraView extends View {
 
 
     }
-    public CameraView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
+
+    public CameraView(Context context, @Nullable AttributeSet attrs) {
+        super(context, attrs);
     }
 
     @Override
