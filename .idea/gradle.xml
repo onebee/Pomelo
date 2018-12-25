@@ -10,6 +10,7 @@
             <option value="$PROJECT_DIR$" />
             <option value="$PROJECT_DIR$/06-drawing" />
             <option value="$PROJECT_DIR$/07_change_camera_animation" />
+            <option value="$PROJECT_DIR$/08_animation" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
