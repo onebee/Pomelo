@@ -21,4 +21,8 @@ public class Utils {
         return BitmapFactory.decodeResource(resources, R.drawable.avater, options);
     }
 
+    public static float getZForCamera(int loc) {
+        return  loc * Resources.getSystem().getDisplayMetrics().density;
+    }
+
 }
