@@ -35,5 +35,10 @@ public class CircleView extends View {
 
     public void setRADIUS(float RADIUS) {
         this.RADIUS = RADIUS;
+        invalidate();
+    }
+
+    public float getRADIUS() {
+        return RADIUS;
     }
 }

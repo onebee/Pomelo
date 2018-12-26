@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <one.one.com.a08_animation.CircleView
+    <one.one.com.a08_animation.CameraView
         android:id="@+id/view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
