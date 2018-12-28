@@ -3,13 +3,44 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:background="#000000"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <one.one.com.a08_animation.CameraView
+    <!--<one.one.com.a08_animation.CameraView-->
+    <!--android:id="@+id/view"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
+
+
+    <!--<ImageView-->
+    <!--android:id="@+id/view"-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="100dp"-->
+    <!--android:src="@drawable/avater"-->
+    <!--/>-->
+
+
+    <!--<one.one.com.a08_animation.CircleView-->
+        <!--android:id="@+id/view"-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"-->
+
+        <!--/>-->
+
+
+    <one.one.com.a08_animation.VoiceLine
         android:id="@+id/view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="6dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:background="#214CFB"
 
+        />
+
+    <!--<one.one.com.a08_animation.InteractiveVoiceView-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="100dp"/>-->
 </android.support.constraint.ConstraintLayout>

@@ -103,7 +103,7 @@ public class CameraView extends View {
 
 //        canvas.rotate(45,400/2,400/2);
 //        mCamera.applyToCanvas(canvas);
-//        canvas.drawBitmap(Utils.getAvatar(getResources(),400),100,100,mPaint);
+//        canvas.drawBitmap(Utils.getAvatar(getResources(),400),100,100,mPaintLeft);
 
 
 

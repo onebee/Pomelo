@@ -6,6 +6,7 @@ import android.graphics.Color;
 import android.graphics.Paint;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 
 /**
@@ -30,6 +31,7 @@ public class CircleView extends View {
         super.onDraw(canvas);
 
         canvas.drawCircle(getWidth()/2,getHeight()/2,RADIUS,mPaint);
+        Log.d("-----", "  RADIUS :" + RADIUS);
 
     }
 
