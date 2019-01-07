@@ -1,52 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
+    android:orientation="horizontal"
     tools:context=".MainActivity">
 
     <!--<one.diao.com.a10_layout.view.OneView-->
-        <!--android:layout_width="match_parent"-->
-        <!--android:layout_height="match_parent"-->
-        <!--android:background="@color/colorAccent"-->
-        <!--android:src="@drawable/avatar"-->
-        <!--/>-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="@color/colorAccent"-->
+    <!--android:src="@drawable/avatar"-->
+    <!--/>-->
 
 
     <!--<LinearLayout-->
-        <!--android:layout_width="wrap_content"-->
-        <!--android:layout_height="wrap_content"-->
-        <!--android:orientation="vertical"-->
-        <!--android:background="#9928bc97"-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:orientation="vertical"-->
+    <!--android:background="#9928bc97"-->
 
 
-        <!--&gt;-->
+    <!--&gt;-->
 
 
-        <!--<ImageView-->
-            <!--android:layout_width="match_parent"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:src="@drawable/avatar"-->
-            <!--android:scaleType="centerInside"-->
+    <!--<ImageView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:src="@drawable/avatar"-->
+    <!--android:scaleType="centerInside"-->
 
-            <!--/>-->
+    <!--/>-->
 
 
-        <!--<ImageView-->
-            <!--android:layout_width="100dp"-->
-            <!--android:layout_height="50dp"-->
-            <!--android:src="@drawable/avatar"-->
-            <!--/>-->
+    <!--<ImageView-->
+    <!--android:layout_width="100dp"-->
+    <!--android:layout_height="50dp"-->
+    <!--android:src="@drawable/avatar"-->
+    <!--/>-->
 
 
     <!--</LinearLayout>-->
 
 
-    <one.diao.com.a10_layout.view.OneView
-        android:background="@color/colorAccent"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
-</android.support.constraint.ConstraintLayout>
+    <!--<one.diao.com.a10_layout.view.OneView-->
+    <!--android:background="@color/colorAccent"-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"/>-->
+
+
+    <one.diao.com.a10_layout.view.SquareImageView
+        android:layout_width="200dp"
+        android:layout_height="300dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/avatar"
+
+        />
+
+    <View
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:background="@drawable/avatar"
+
+        />
+</LinearLayout>
