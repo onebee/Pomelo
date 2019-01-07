@@ -11,6 +11,8 @@
             <option value="$PROJECT_DIR$/06-drawing" />
             <option value="$PROJECT_DIR$/07_change_camera_animation" />
             <option value="$PROJECT_DIR$/08_animation" />
+            <option value="$PROJECT_DIR$/09_bitmap_drawable" />
+            <option value="$PROJECT_DIR$/10_layout" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
