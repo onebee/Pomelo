@@ -18,7 +18,9 @@ public class ScaleImageView extends View {
     Bitmap mBitmap;
     Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
 
-    private float WIDTH = Utils.dp2px(300);
+
+    float WIDTH = Utils.dp2px(300);
+    float offsetX,offsetY;
 
     {
 
@@ -31,11 +33,19 @@ public class ScaleImageView extends View {
         mBitmap = Utils.getAvatar(getResources(),(int) WIDTH);
     }
 
+
+    @Override
+    protected void onSizeChanged(int w, int h, int oldw, int oldh) {
+        super.onSizeChanged(w, h, oldw, oldh);
+        offsetX = (getWidth()-WIDTH)/2f;
+        offsetY = (getHeight()-WIDTH)/2f;
+    }
+
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawBitmap(mBitmap,0,0,mPaint);
+        canvas.drawBitmap(mBitmap,offsetX,offsetY,mPaint);
 
     }
 
