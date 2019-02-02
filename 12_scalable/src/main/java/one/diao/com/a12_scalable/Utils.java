@@ -1,4 +1,4 @@
-package one.one.com.a08_animation;
+package one.diao.com.a12_scalable;
 
 import android.content.res.Resources;
 import android.graphics.Bitmap;
