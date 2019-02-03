@@ -36,6 +36,7 @@ public class ScaleImageView extends View implements GestureDetector.OnGestureLis
 
     float OVER_SCALE_FACTOR = 1.5f;
 
+
 //    OverScroller mOverScroller;
     Scroller mOverScroller;
 
