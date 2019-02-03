@@ -74,7 +74,9 @@ public class ScaleImageView extends View implements GestureDetector.OnGestureLis
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-        canvas.translate(offsetX, offsetY);
+
+        // * scaleFraction 缩小的时候偏移会缩小 回到起始位置
+        canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction);
         float scale = smallScale + (bigScale - smallScale) * scaleFraction;
 //        float scale = big ? bigScale : smallScale;
         canvas.scale(scale, scale, getWidth() / 2, getHeight() / 2);
@@ -107,16 +109,19 @@ public class ScaleImageView extends View implements GestureDetector.OnGestureLis
     public boolean onScroll(MotionEvent e1, MotionEvent e2, float distanceX, float distanceY) {
 
         if (big) {
-            offsetX -= distanceX;
-            offsetX = Math.min(offsetX, (mBitmap.getWidth() * bigScale - getWidth()) / 2);
-            offsetX = Math.max(offsetX, (-mBitmap.getWidth() * bigScale - getWidth()) / 2);
-            offsetY -= distanceY;
-            offsetY = Math.min(offsetY, (mBitmap.getHeight() * bigScale - getHeight()) / 2);
-            offsetY = Math.max(offsetY, (-mBitmap.getHeight() * bigScale - getHeight()) / 2);
+            fixOffset();
             invalidate();
         }
 
         return false;
+    }
+
+
+    private void fixOffset() {
+        offsetX = Math.min(offsetX, (mBitmap.getWidth() * bigScale - getWidth()) / 2);
+        offsetX = Math.max(offsetX, (-mBitmap.getWidth() * bigScale - getWidth()) / 2);
+        offsetY = Math.min(offsetY, (mBitmap.getHeight() * bigScale - getHeight()) / 2);
+        offsetY = Math.max(offsetY, (-mBitmap.getHeight() * bigScale - getHeight()) / 2);
     }
 
     @Override
@@ -164,6 +169,11 @@ public class ScaleImageView extends View implements GestureDetector.OnGestureLis
     public boolean onDoubleTap(MotionEvent e) {
         big = !big;
         if (big) {
+
+            offsetX = (e.getX()-getWidth()/2f) - (e.getX()-getWidth()/2f)*bigScale/smallScale;
+            offsetY = (e.getY()-getHeight()/2f) - (e.getY()-getHeight()/2f)*bigScale/smallScale;
+            fixOffset();
+            fixOffset();
             getScaleAnimator().start();
         } else {
             getScaleAnimator().reverse();
@@ -190,6 +200,15 @@ public class ScaleImageView extends View implements GestureDetector.OnGestureLis
     private ObjectAnimator getScaleAnimator() {
         if (scaleAnimator == null) {
             scaleAnimator = ObjectAnimator.ofFloat(this, "scaleFraction", 0, 1);
+//            scaleAnimator.addListener(new AnimatorListenerAdapter() {
+//                @Override
+//                public void onAnimationEnd(Animator animation) {
+//                    super.onAnimationEnd(animation);
+//
+//                    offsetX=0;
+//                    offsetY=0;
+//                }
+//            });
         }
         return scaleAnimator;
 
