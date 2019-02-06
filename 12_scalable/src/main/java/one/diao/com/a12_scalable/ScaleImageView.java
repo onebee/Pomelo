@@ -42,7 +42,7 @@ public class ScaleImageView extends View {
     HenGestureListener mHenGestureListener = new HenGestureListener();
     HenFlingRunner mFlingRunner = new HenFlingRunner();
     ScaleGestureDetector mScaleGestureDetector;
-    HenScaleListener mHenScaleListener;
+    HenScaleListener mHenScaleListener = new HenScaleListener();
 
 
     OverScroller mOverScroller;
@@ -78,6 +78,8 @@ public class ScaleImageView extends View {
             smallScale = (float) getHeight() / mBitmap.getHeight();
             bigScale = (float) getWidth() / mBitmap.getWidth() * OVER_SCALE_FACTOR;
         }
+
+        currentScale = smallScale;
     }
 
 
@@ -98,7 +100,7 @@ public class ScaleImageView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return mDetector.onTouchEvent(event);
+        return mScaleGestureDetector.onTouchEvent(event);
     }
 
 
@@ -255,7 +257,7 @@ public class ScaleImageView extends View {
     class HenScaleListener implements ScaleGestureDetector.OnScaleGestureListener {
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
-            detector.getScaleFactor(); //获取放大系数
+           currentScale =   detector.getScaleFactor(); //获取放大系数
 
             invalidate();
             return false;
