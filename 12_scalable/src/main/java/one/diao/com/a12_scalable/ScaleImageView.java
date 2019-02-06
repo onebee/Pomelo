@@ -88,7 +88,7 @@ public class ScaleImageView extends View {
         super.onDraw(canvas);
 
         // * scaleFraction 缩小的时候偏移会缩小 回到起始位置
-        float scaleFraction = (currentScale- smallScale) / (bigScale - smallScale);
+        float scaleFraction = (currentScale - smallScale) / (bigScale - smallScale);
         canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction);
 //        float scale = smallScale + (bigScale - smallScale) * scaleFraction;
 //        float scale = big ? bigScale : smallScale;
@@ -100,7 +100,11 @@ public class ScaleImageView extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return mScaleGestureDetector.onTouchEvent(event);
+        boolean result = mScaleGestureDetector.onTouchEvent(event);
+        if (!mScaleGestureDetector.isInProgress()) {
+           result =  mDetector.onTouchEvent(event);
+        }
+        return result;
     }
 
 
@@ -144,7 +148,7 @@ public class ScaleImageView extends View {
 //            });
         }
 
-        scaleAnimator.setFloatValues(smallScale,bigScale);
+        scaleAnimator.setFloatValues(smallScale, bigScale);
         return scaleAnimator;
 
     }
@@ -255,9 +259,13 @@ public class ScaleImageView extends View {
 
 
     class HenScaleListener implements ScaleGestureDetector.OnScaleGestureListener {
+
+
+        float initScale;
+
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
-           currentScale =   detector.getScaleFactor(); //获取放大系数
+            currentScale = initScale * detector.getScaleFactor(); //获取放大系数
 
             invalidate();
             return false;
@@ -265,6 +273,8 @@ public class ScaleImageView extends View {
 
         @Override
         public boolean onScaleBegin(ScaleGestureDetector detector) {
+
+            initScale = currentScale;
             return true;
         }
 
