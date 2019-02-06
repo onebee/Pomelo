@@ -109,7 +109,7 @@ public class ScaleImageView extends View {
 
 
     private void fixOffset() {
-        offsetX = Math.min(offsetX, (mBitmap.getWidth() * bigScale - getWidth()) / 2);
+        offsetX = Math.min(offsetX, (mBitmap.getWidth() * bigScale - getWidth()) /  2);
         offsetX = Math.max(offsetX, (-mBitmap.getWidth() * bigScale - getWidth()) / 2);
         offsetY = Math.min(offsetY, (mBitmap.getHeight() * bigScale - getHeight()) / 2);
         offsetY = Math.max(offsetY, (-mBitmap.getHeight() * bigScale - getHeight()) / 2);
