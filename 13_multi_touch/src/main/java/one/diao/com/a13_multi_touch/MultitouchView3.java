@@ -1,12 +1,13 @@
 package one.diao.com.a13_multi_touch;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
+import android.graphics.Color;
 import android.graphics.Paint;
+import android.graphics.Path;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
-import android.util.Log;
+import android.util.SparseArray;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -16,79 +17,70 @@ import android.view.View;
 public class MultitouchView3 extends View {
 
     private static final String TAG = "MultitouchView1";
-
     private static final float IMAGE_WIDTH = Utils.dp2px(200);
     private static final float WIDTH = 100;
 
     Paint paint = new Paint(Paint.ANTI_ALIAS_FLAG);
-    Bitmap bitmap;
+    //    Path path = new Path();
+    SparseArray<Path> paths = new SparseArray<>();
 
-    float offsetX, offsetY;
-    float originOffsetX, originOffsetY;
-    float downX, downY;
+    {
 
-    int index;
-    int trackingPointerId;
+        paint.setColor(Color.BLUE);
+        paint.setStyle(Paint.Style.STROKE);
+        paint.setStrokeWidth(Utils.dp2px(4));
+        paint.setStrokeCap(Paint.Cap.ROUND);
+        paint.setStrokeJoin(Paint.Join.ROUND);
 
+    }
 
     public MultitouchView3(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
-        bitmap = Utils.getAvatar(getResources(), (int) IMAGE_WIDTH);
+
     }
 
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        float sumX = 0;
-        float sumY = 0;
-        boolean isPointerUp = event.getActionMasked() == MotionEvent.ACTION_POINTER_UP;
-
-        int pointerCount = event.getPointerCount();
-        for (int i = 0; i < pointerCount; i++) {
-
-            if (!(isPointerUp && i == event.getActionIndex())) {
-
-                sumX += event.getX(i);
-                sumY += event.getY(i);
-            }
-
-        }
-
-
-        if (isPointerUp) {
-            pointerCount -= 1;
-        }
-        float focusX = sumX / pointerCount;
-        float focusY = sumY / pointerCount;
 
 
         switch (event.getActionMasked()) {
+
             case MotionEvent.ACTION_DOWN:
             case MotionEvent.ACTION_POINTER_DOWN:
-            case MotionEvent.ACTION_POINTER_UP:
+                Path path = new Path();
+                int actionIndex = event.getActionIndex();
+                int pointerId = event.getPointerId(actionIndex);
 
-                trackingPointerId = event.getPointerId(0);
-                downX = focusX;
-                downY = focusY;
-
-                originOffsetX = offsetX;
-                originOffsetY = offsetY;
-                Log.d(TAG, "downX ： " + downX + "  downY ：" + downY);
-                Log.d(TAG, "originOffsetX ： " + originOffsetX + "  originOffsetY ：" + originOffsetY);
+                path.moveTo(event.getX(actionIndex), event.getY(actionIndex));
+                paths.append(pointerId, path);
+                invalidate();
 
                 break;
-
             case MotionEvent.ACTION_MOVE:
-
-                offsetX = originOffsetX + focusX - downX;
-                offsetY = originOffsetY + focusY - downY;
-
-                Log.d(TAG, "offsetX ： " + offsetX + "  offsetY ：" + offsetY);
+                for (int i = 0; i < event.getPointerCount(); i++) {
+                    pointerId = event.getPointerId(i);
+                    path = paths.get(pointerId);
+                    path.lineTo(event.getX(i), event.getY(i));
+                }
                 invalidate();
                 break;
 
+            case MotionEvent.ACTION_CANCEL:
+
+                break;
+
+            case MotionEvent.ACTION_UP:
+            case MotionEvent.ACTION_POINTER_UP:
+
+                // 删除抬起的手指
+                pointerId = event.getPointerId(event.getActionIndex());
+                paths.remove(pointerId);
+                invalidate();
+                break;
 
         }
+
 
         return true;
     }
@@ -96,11 +88,9 @@ public class MultitouchView3 extends View {
     @Override
     protected void onDraw(Canvas canvas) {
 //        super.onDraw(canvas);
-        canvas.drawBitmap(bitmap, offsetX, offsetY, paint);
-        for (int i = 1; i < 20; i++) {
-            canvas.drawLine(WIDTH * i, 0, WIDTH * i, getHeight(), paint);
-            canvas.drawLine(0, WIDTH * i, getWidth(), WIDTH * i, paint);
-
+        for (int i = 0; i < paths.size(); i++) {
+            Path path = paths.valueAt(i);
+            canvas.drawPath(path, paint);
         }
     }
 }
