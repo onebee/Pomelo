@@ -27,6 +27,9 @@ public class MultitouchView1 extends View {
     float originOffsetX, originOffsetY;
     float downX, downY;
 
+    int index;
+    int trackingPointerId;
+
 
     public MultitouchView1(Context context, @Nullable AttributeSet attrs) {
         super(context, attrs);
@@ -38,6 +41,8 @@ public class MultitouchView1 extends View {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_DOWN:
+
+                trackingPointerId = event.getPointerId(0);
                 downX = event.getX();
                 downY = event.getY();
 
@@ -50,11 +55,52 @@ public class MultitouchView1 extends View {
 
             case MotionEvent.ACTION_MOVE:
 
-                offsetX = originOffsetX + event.getX() - downX;
-                offsetY = originOffsetY + event.getY() - downY;
+                int index = event.findPointerIndex(trackingPointerId);
+                offsetX = originOffsetX + event.getX(index) - downX;
+                offsetY = originOffsetY + event.getY(index) - downY;
 
                 Log.d(TAG, "offsetX ： " + offsetX + "  offsetY ：" + offsetY);
                 invalidate();
+                break;
+
+
+            case MotionEvent.ACTION_POINTER_DOWN:
+
+                // 拿到刚刚按下去的手指ID
+                int actionIndex = event.getActionIndex();
+                trackingPointerId = event.getPointerId(actionIndex);
+
+
+                downX = event.getX(actionIndex);
+                downY = event.getY(actionIndex);
+
+                originOffsetX = offsetX;
+                originOffsetY = offsetY;
+                break;
+
+
+            case MotionEvent.ACTION_POINTER_UP:
+
+                actionIndex = event.getActionIndex();
+                int pointerId = event.getPointerId(actionIndex);
+                // 判断当前抬起的手指 是不是在追踪的手指
+                if (pointerId == trackingPointerId) {
+                    int newIndex;
+
+                    if (actionIndex == event.getPointerCount() - 1) {
+                        newIndex = event.getPointerCount() - 2;
+                    } else {
+                        newIndex = event.getPointerCount() - 1;
+                    }
+
+                    trackingPointerId = event.getPointerId(newIndex);
+                    downX = event.getX(actionIndex);
+                    downY = event.getY(actionIndex);
+                    originOffsetX = offsetX;
+                    originOffsetY = offsetY;
+
+                }
+
                 break;
         }
 
