@@ -11,7 +11,7 @@ public class Utils {
     }
 
 
-   public static Bitmap getAvatar(Resources resources,int width) {
+    public static Bitmap getAvatar(Resources resources, int width) {
         BitmapFactory.Options options = new BitmapFactory.Options();
         options.inJustDecodeBounds = true;
         BitmapFactory.decodeResource(resources, R.drawable.psu, options);
@@ -22,7 +22,7 @@ public class Utils {
     }
 
     public static float getZForCamera(int loc) {
-        return  loc * Resources.getSystem().getDisplayMetrics().density;
+        return loc * Resources.getSystem().getDisplayMetrics().density;
     }
 
 }
