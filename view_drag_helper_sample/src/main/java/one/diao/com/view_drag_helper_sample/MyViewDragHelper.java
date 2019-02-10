@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.v4.view.ViewCompat;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -64,17 +65,25 @@ public class MyViewDragHelper extends FrameLayout {
         @Override
         public boolean tryCaptureView(@NonNull View view, int i) {
             // 当前触摸的child 是 mainView 的时候开始检测
+            // 根据传入的View 参数 来决定view 是否可以 拖动
 
             return mainView == view;
         }
 
         @Override
         public int clampViewPositionHorizontal(@NonNull View child, int left, int dx) {
+            Log.d("------", " left - " + left);
+            if (left > 250) {
+                left =250;
+            }
             return left;
         }
 
         @Override
         public int clampViewPositionVertical(@NonNull View child, int top, int dy) {
+            Log.d("------", " top - " + top);
+            Log.d("------", " width - " + getWidth());
+            Log.d("------", " height - " + getHeight());
             return top;
         }
 
