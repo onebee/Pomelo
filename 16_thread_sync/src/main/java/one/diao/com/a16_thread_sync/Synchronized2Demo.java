@@ -12,6 +12,7 @@ public class Synchronized2Demo implements TestDemo {
     }
 
 
+
     @Override
     public void runTest() {
 

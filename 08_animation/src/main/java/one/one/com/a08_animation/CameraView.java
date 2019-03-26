@@ -55,7 +55,7 @@ public class CameraView extends View {
         mPaint.setTextSize(Utils.dp2px(25));
         mPaint.getFontMetrics(mFontMetrics);
 
-        mCamera.setLocation(0,0,Utils.getZForCamera(-8));
+        mCamera.setLocation(0, 0, Utils.getZForCamera(-8));
 //        mCamera.rotateY(-45);
     }
 
@@ -81,7 +81,7 @@ public class CameraView extends View {
         mCamera.rotateX(topFlip);
         mCamera.applyToCanvas(canvas);
         mCamera.restore();
-        canvas.clipRect(-400,-400,400,0);
+        canvas.clipRect(-400, -400, 400, 0);
         canvas.rotate(flipRotation);
         canvas.translate(-(100 + 400 / 2), -(100 + 400 / 2));
         canvas.drawBitmap(Utils.getAvatar(getResources(), 400), 100, 100, mPaint);
@@ -95,7 +95,7 @@ public class CameraView extends View {
         mCamera.rotateX(bottomFlip);
         mCamera.applyToCanvas(canvas);
         mCamera.restore();
-        canvas.clipRect(-400,0,400,400);
+        canvas.clipRect(-400, 0, 400, 400);
         canvas.rotate(flipRotation);
         canvas.translate(-(100 + 400 / 2), -(100 + 400 / 2));
         canvas.drawBitmap(Utils.getAvatar(getResources(), 400), 100, 100, mPaint);
@@ -104,7 +104,6 @@ public class CameraView extends View {
 //        canvas.rotate(45,400/2,400/2);
 //        mCamera.applyToCanvas(canvas);
 //        canvas.drawBitmap(Utils.getAvatar(getResources(),400),100,100,mPaintLeft);
-
 
 
     }
