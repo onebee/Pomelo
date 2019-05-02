@@ -3,9 +3,6 @@
   <component name="GradleSettings">
     <option name="linkedExternalProjectsSettings">
       <GradleProjectSettings>
-        <compositeConfiguration>
-          <compositeBuild compositeDefinitionSource="SCRIPT" />
-        </compositeConfiguration>
         <option name="distributionType" value="DEFAULT_WRAPPED" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="modules">
@@ -16,6 +13,23 @@
             <option value="$PROJECT_DIR$/08_animation" />
             <option value="$PROJECT_DIR$/09_bitmap_drawable" />
             <option value="$PROJECT_DIR$/10_layout" />
+            <option value="$PROJECT_DIR$/11_touch" />
+            <option value="$PROJECT_DIR$/12_scalable" />
+            <option value="$PROJECT_DIR$/13_multi_touch" />
+            <option value="$PROJECT_DIR$/14_view_pager" />
+            <option value="$PROJECT_DIR$/15_drag_nestedscroll" />
+            <option value="$PROJECT_DIR$/16_thread_sync" />
+            <option value="$PROJECT_DIR$/16_thread_synchrionization" />
+            <option value="$PROJECT_DIR$/17_thread_interaction" />
+            <option value="$PROJECT_DIR$/19_io" />
+            <option value="$PROJECT_DIR$/20_gradle" />
+            <option value="$PROJECT_DIR$/26_pluginable" />
+            <option value="$PROJECT_DIR$/26_pluginable_plug" />
+            <option value="$PROJECT_DIR$/27_hot_update" />
+            <option value="$PROJECT_DIR$/28_annation_processing" />
+            <option value="$PROJECT_DIR$/28_annotation_processing" />
+            <option value="$PROJECT_DIR$/28_lib_reflection" />
+            <option value="$PROJECT_DIR$/view_drag_helper_sample" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />

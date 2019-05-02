@@ -1,7 +1,11 @@
 package one.diao.com.a19_io;
 
+import android.annotation.TargetApi;
+import android.os.Build;
+
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
@@ -13,11 +17,18 @@ import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
 import java.io.Reader;
 import java.io.Writer;
+import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.net.Socket;
 import java.nio.ByteBuffer;
 import java.nio.channels.FileChannel;
+import java.nio.channels.ServerSocketChannel;
+import java.nio.channels.SocketChannel;
 import java.nio.charset.Charset;
+
+import okio.Buffer;
+import okio.Okio;
+import okio.Source;
 
 /**
  * @author diaokaibin@gmail.com on 2019-05-01.
@@ -27,14 +38,58 @@ public class main {
     public static void main(String[] args) {
 
 
-        nio1();
+        okio2();
+    }
+
+    private static void okio2() {
+
+    }
+
+    private static void okio1() {
+
+        try (Source source = Okio.buffer(Okio.source(new File("./19_io/text.txt")))) {
+            Buffer buffer = new Buffer();
+            source.read(buffer, 1024);
+            String readUtf8 = buffer.readUtf8Line();
+            System.out.println(readUtf8);
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @TargetApi(Build.VERSION_CODES.N)
+    private static void nio2() {
+        try {
+            // 阻塞式的网络非io 和非阻塞
+            ServerSocketChannel serverSocketChannel = ServerSocketChannel.open();
+            serverSocketChannel.bind(new InetSocketAddress(8080));
+
+            serverSocketChannel.configureBlocking(false);
+            SocketChannel socketChannel = serverSocketChannel.accept();
+
+            ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+
+            while (socketChannel.read(byteBuffer) != -1) {
+                byteBuffer.flip();
+                socketChannel.write(byteBuffer);
+                byteBuffer.clear();
+
+
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static void nio1() {
 
 
         try {
-            RandomAccessFile file = new RandomAccessFile("./19_io/text.txt","r");
+            RandomAccessFile file = new RandomAccessFile("./19_io/text.txt", "r");
 
             FileChannel channel = file.getChannel();
             ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
@@ -42,6 +97,7 @@ public class main {
 
             byteBuffer.flip();
             System.out.println(Charset.defaultCharset().decode(byteBuffer));
+            byteBuffer.clear();
 
         } catch (FileNotFoundException e) {
             e.printStackTrace();
