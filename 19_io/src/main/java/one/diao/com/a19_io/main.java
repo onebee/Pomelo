@@ -12,6 +12,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.RandomAccessFile;
@@ -43,6 +45,25 @@ public class main {
 
     private static void okio2() {
 
+        Buffer buffer = new Buffer();
+        try (ObjectOutputStream objectOutputStream = new ObjectOutputStream(buffer.outputStream())
+        ) {
+            objectOutputStream.writeChar('a');
+            objectOutputStream.writeUTF("utf");
+            objectOutputStream.writeBoolean(true);
+
+            objectOutputStream.flush();
+
+            ObjectInputStream objectInputStream = new ObjectInputStream(buffer.inputStream());
+            System.out.println(objectInputStream.readChar());
+            System.out.println(objectInputStream.readUTF());
+            System.out.println(objectInputStream.readBoolean());
+
+
+        } catch (IOException e) {
+            e.printStackTrace();
+
+        }
     }
 
     private static void okio1() {
