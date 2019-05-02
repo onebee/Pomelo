@@ -10,10 +10,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.OutputStreamWriter;
+import java.io.RandomAccessFile;
 import java.io.Reader;
 import java.io.Writer;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.nio.ByteBuffer;
+import java.nio.channels.FileChannel;
+import java.nio.charset.Charset;
 
 /**
  * @author diaokaibin@gmail.com on 2019-05-01.
@@ -23,7 +27,28 @@ public class main {
     public static void main(String[] args) {
 
 
-        io5();
+        nio1();
+    }
+
+    private static void nio1() {
+
+
+        try {
+            RandomAccessFile file = new RandomAccessFile("./19_io/text.txt","r");
+
+            FileChannel channel = file.getChannel();
+            ByteBuffer byteBuffer = ByteBuffer.allocate(1024);
+            channel.read(byteBuffer);
+
+            byteBuffer.flip();
+            System.out.println(Charset.defaultCharset().decode(byteBuffer));
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private static void io1() {
@@ -99,6 +124,8 @@ public class main {
 
     private static void io5() {
 
+        // 实际情况可能是 等待的时候是一个线程  工作的时候是另一个线程
+
         try {
             ServerSocket serverSocket = new ServerSocket(8080);
             Socket socket = serverSocket.accept();
@@ -112,7 +139,7 @@ public class main {
             BufferedWriter bufferedWriter = new BufferedWriter(new OutputStreamWriter(outputStream));
 
             String data;
-            while ((data = bufferedReader.readLine()) !=null) {
+            while ((data = bufferedReader.readLine()) != null) {
 
                 bufferedWriter.write("onebit response :" + data);
                 bufferedWriter.write("\n");
