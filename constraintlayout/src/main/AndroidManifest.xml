@@ -9,6 +9,24 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".CircularPositioning">
+        </activity>
+        <activity android:name=".PlaceHolder">
+        </activity>
+        <activity android:name=".LinearActivity">
+        </activity>
+        <activity android:name=".GuideLineActivity">
+        </activity>
+        <activity android:name=".FlowActivity">
+        </activity>
+        <activity android:name=".DimensionRatio">
+        </activity>
+        <activity android:name=".ConstrainSetActivity">
+        </activity>
+        <activity android:name=".ConstraintLayoutSample">
+        </activity>
+        <activity android:name=".CircularReveal">
+        </activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
