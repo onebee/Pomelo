@@ -7,4 +7,40 @@
     android:layout_height="match_parent"
     tools:context=".CircularPositioning">
 
+
+
+
+    <ImageView
+        android:id="@+id/sun"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/sun"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        />
+
+
+    <ImageView
+        android:layout_width="66dp"
+        android:layout_height="66dp"
+        android:src="@drawable/earth"
+        android:id="@+id/earth"
+        app:layout_constraintCircle="@id/sun"
+        app:layout_constraintCircleRadius="150dp"
+        app:layout_constraintCircleAngle="45"
+        />
+
+    <ImageView
+        android:id="@+id/moon"
+        android:layout_width="33dp"
+        android:layout_height="33dp"
+        android:src="@drawable/moon"
+        app:layout_constraintCircle="@id/earth"
+        app:layout_constraintCircleRadius="55dp"
+        app:layout_constraintCircleAngle="45"
+        />
+
 </android.support.constraint.ConstraintLayout>
