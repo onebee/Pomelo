@@ -19,7 +19,7 @@ class CircularRevealHelper(context: Context, attrs: AttributeSet) :
             val radius = Math.hypot(view.width.toDouble(), view.height.toDouble()).toInt()
 
             ViewAnimationUtils.createCircularReveal(view, 0, 0, 0f, radius.toFloat())
-                .setDuration(2000L)
+                .setDuration(20000L)
                 .start()
         }
     }
