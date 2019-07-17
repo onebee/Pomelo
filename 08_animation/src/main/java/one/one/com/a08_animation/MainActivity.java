@@ -12,7 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     private String s1 = "Hi, 主人您好!";
-    private String s2 = "欢迎您使用科勒镜柜";
+    private String s2 = "欢迎您使用";
     private String s3 = "下面镜子将进入初始化阶段";
     private String s4 = "请选择您的网络并连接";
     private HaView tv1, tv2, tv3, tv4;
