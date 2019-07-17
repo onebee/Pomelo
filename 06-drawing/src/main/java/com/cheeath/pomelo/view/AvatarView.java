@@ -43,14 +43,28 @@ public class AvatarView extends View {
         super.onDraw(canvas);
 
         paint.setColor(Color.BLUE);
-        canvas.drawOval(PADDING, PADDING, PADDING + WIDTH, PADDING + WIDTH, paint);
+        canvas.drawOval(PADDING,
+                PADDING,
+                PADDING + WIDTH,
+                PADDING + WIDTH,
+                paint);
+
         paint.setColor(Color.RED);
-        int saveLayer = canvas.saveLayer(saveRectf, paint);
-        canvas.drawOval(PADDING + EDGE_WIDTH, PADDING + EDGE_WIDTH, PADDING + WIDTH - EDGE_WIDTH, PADDING + WIDTH - EDGE_WIDTH, paint);
+
+
+//        int saveLayer = canvas.saveLayer(saveRectf, paint);
+        canvas.drawOval(PADDING + EDGE_WIDTH,
+                PADDING + EDGE_WIDTH,
+                PADDING + WIDTH - EDGE_WIDTH,
+                PADDING + WIDTH - EDGE_WIDTH,
+                paint);
         paint.setXfermode(xfermode);
-        canvas.drawBitmap(bitmap, PADDING, PADDING, paint);
+
+
+//        canvas.drawBitmap(bitmap, PADDING, PADDING, paint);
         paint.setXfermode(null);
-        canvas.restoreToCount(saveLayer);
+
+//        canvas.restoreToCount(saveLayer);
 
     }
 

@@ -22,7 +22,7 @@ public class Dashboard extends View {
     private static final float LENGTH = Utils.dp2px(100);
 
 
-    private int roate = 0;
+    private int roate = 180;
 
     private PathEffect effect;
     Path dash = new Path();
@@ -46,7 +46,13 @@ public class Dashboard extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.drawArc(getWidth() / 2 - RADIUS, getHeight() / 2 - RADIUS, getWidth() / 2 + RADIUS, getHeight() / 2 + RADIUS, ANGLE / 2 + 90, 360 - ANGLE, false, paint);
+        canvas.drawArc(getWidth() / 2 - RADIUS,
+                getHeight() / 2 - RADIUS,
+                getWidth() / 2 + RADIUS,
+                getHeight() / 2 + RADIUS,
+                ANGLE / 2 + 90,
+                360 - ANGLE,
+                false, paint);
 
         // 画刻度
         paint.setPathEffect(effect);
@@ -54,11 +60,14 @@ public class Dashboard extends View {
         paint.setPathEffect(null);
 
 
+
         //画指针 TODO : 坐标的计算
         canvas.drawLine(getWidth() / 2, getHeight() / 2,
                 (float) Math.cos(Math.toRadians(roate)) * LENGTH + getWidth() / 2,
                 (float) Math.sin(Math.toRadians(roate)) * LENGTH + getHeight() / 2, paint
         );
+
+
 
 
     }

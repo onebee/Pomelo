@@ -3,7 +3,6 @@ package com.cheeath.pomelo;
 import android.arch.lifecycle.MutableLiveData;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.widget.TextView;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -48,13 +47,13 @@ public class MainActivity extends AppCompatActivity {
         String tomorrowS = sdf.format(tomorrow);
         String dayAfterTomorrowS = sdf.format(dayAfterTomorrow);
 
-        TextView tv = findViewById(R.id.tv);
-        tv.setText(toadyS + "\n"
-
-                + tomorrowS + "\n"
-
-                + dayAfterTomorrowS + "\n"
-        );
+//        TextView tv = findViewById(R.id.tv);
+//        tv.setText(toadyS + "\n"
+//
+//                + tomorrowS + "\n"
+//
+//                + dayAfterTomorrowS + "\n"
+//        );
 
     }
 

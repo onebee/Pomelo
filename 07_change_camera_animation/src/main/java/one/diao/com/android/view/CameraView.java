@@ -18,7 +18,7 @@ public class CameraView extends View {
 
     Paint mPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
     Paint.FontMetrics mFontMetrics = new Paint.FontMetrics();
-
+    float SPACE = Utils.dp2px(50);
     Camera mCamera = new Camera();
 
 
@@ -39,8 +39,8 @@ public class CameraView extends View {
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
         for (int i = 0; i < 50; i++) {
-            canvas.drawLine(0, 100 * (i + 1), getWidth(), 100 * (i + 1), mPaint);
-            canvas.drawLine(100 * (i + 1), 0, 100 * (i + 1), getHeight(), mPaint);
+            canvas.drawLine(0, SPACE * (i + 1), getWidth(), SPACE * (i + 1), mPaint);
+            canvas.drawLine(SPACE * (i + 1), 0, SPACE * (i + 1), getHeight(), mPaint);
 
         }
         // 倒着想
