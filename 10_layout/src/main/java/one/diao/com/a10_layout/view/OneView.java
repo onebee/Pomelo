@@ -28,10 +28,11 @@ public class OneView extends View {
 
     }
 
-//    @Override
-//    public void layout(int l, int t, int r, int b) {
+    @Override
+    public void layout(int l, int t, int r, int b) {
 //        super.layout(l, t, 200, 200);
-//    }
+        super.layout(l, t, r, b);
+    }
 
     @Override
     protected void onLayout(boolean changed, int left, int top, int right, int bottom) {

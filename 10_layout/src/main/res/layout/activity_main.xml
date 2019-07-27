@@ -51,18 +51,24 @@
     <!--android:layout_height="match_parent"/>-->
 
 
-    <one.diao.com.a10_layout.view.SquareImageView
-        android:layout_width="200dp"
-        android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/avatar"
+    <!--<one.diao.com.a10_layout.view.SquareImageView-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="300dp"-->
+        <!--android:scaleType="centerCrop"-->
+        <!--android:src="@drawable/avatar"-->
 
-        />
+        <!--/>-->
 
-    <View
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@drawable/avatar"
+    <!--<View-->
+        <!--android:layout_width="200dp"-->
+        <!--android:layout_height="200dp"-->
+        <!--android:background="@drawable/avatar"-->
+
+        <!--/>-->
+    <one.diao.com.a10_layout.view.OneView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#888888"
 
         />
 </LinearLayout>
