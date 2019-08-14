@@ -57,7 +57,7 @@ public class ScaleImageView extends View {
 //        mOverScroller = new Scroller(context);
 //        mDetector.setOnDoubleTapListener(this);
 
-        // 关闭长按
+        // 关闭长按00000000000
 //        mDetector.setIsLongpressEnabled(false);
 
         mScaleGestureDetector = new ScaleGestureDetector(context, mHenScaleListener);
@@ -102,14 +102,14 @@ public class ScaleImageView extends View {
     public boolean onTouchEvent(MotionEvent event) {
         boolean result = mScaleGestureDetector.onTouchEvent(event);
         if (!mScaleGestureDetector.isInProgress()) {
-           result =  mDetector.onTouchEvent(event);
+            result = mDetector.onTouchEvent(event);
         }
         return result;
     }
 
 
     private void fixOffset() {
-        offsetX = Math.min(offsetX, (mBitmap.getWidth() * bigScale - getWidth()) /  2);
+        offsetX = Math.min(offsetX, (mBitmap.getWidth() * bigScale - getWidth()) / 2);
         offsetX = Math.max(offsetX, (-mBitmap.getWidth() * bigScale - getWidth()) / 2);
         offsetY = Math.min(offsetY, (mBitmap.getHeight() * bigScale - getHeight()) / 2);
         offsetY = Math.max(offsetY, (-mBitmap.getHeight() * bigScale - getHeight()) / 2);
