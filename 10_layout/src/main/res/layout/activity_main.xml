@@ -8,7 +8,7 @@
     android:orientation="horizontal"
     tools:context=".MainActivity">
 
-    <!--<one.diao.com.a10_layout.view.OneView-->
+    <!--<one.diao.com.a10_layout.viewOneView-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"-->
     <!--android:background="@color/colorAccent"-->
@@ -45,24 +45,229 @@
     <!--</LinearLayout>-->
 
 
-    <!--<one.diao.com.a10_layout.view.OneView-->
+    <!--<one.diao.com.a10_layout.viewOneView-->
     <!--android:background="@color/colorAccent"-->
     <!--android:layout_width="match_parent"-->
     <!--android:layout_height="match_parent"/>-->
 
 
-    <one.diao.com.a10_layout.view.SquareImageView
-        android:layout_width="200dp"
-        android:layout_height="300dp"
-        android:scaleType="centerCrop"
-        android:src="@drawable/avatar"
+    <!--<one.diao.com.a10_layout.viewSquareImageView-->
+    <!--android:layout_width="200dp"-->
+    <!--android:layout_height="300dp"-->
+    <!--android:scaleType="centerCrop"-->
+    <!--android:src="@drawable/avatar"-->
 
-        />
+    <!--/>-->
 
-    <View
-        android:layout_width="200dp"
-        android:layout_height="200dp"
-        android:background="@drawable/avatar"
+    <!--<View-->
+    <!--android:layout_width="200dp"-->
+    <!--android:layout_height="200dp"-->
+    <!--android:background="@drawable/avatar"-->
 
-        />
+    <!--/>-->
+    <!--<one.diao.com.a10_layout.viewOneView-->
+    <!--android:layout_width="match_parent"-->
+    <!--android:layout_height="match_parent"-->
+    <!--android:background="#888888"-->
+
+    <!--/>-->
+
+    <!--<one.diao.com.a10_layout.viewCircleView-->
+    <!--android:layout_width="wrap_content"-->
+    <!--android:layout_height="wrap_content"-->
+    <!--android:background="@color/colorAccent"-->
+
+    <!--/>-->
+
+    <one.diao.com.a10_layout.view.TagLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/colorPrimary"
+
+        >
+
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/avatar"-->
+            <!--/>-->
+
+        <!--<ImageView-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="@drawable/avatar"-->
+            <!--/>-->
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="北京市" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="天津市" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="上海市" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="重庆市" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="河北省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="山西省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="辽宁省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="吉林省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="黑龙江省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="江苏省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="浙江省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="安徽省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="福建省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="江西省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="山东省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="河南省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="湖北省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="湖南省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="广东省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="海南省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="四川省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="贵州省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="云南省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="陕西省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="甘肃省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="青海省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="台湾省" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="内蒙古自治区" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="广西壮族自治区" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="西藏自治区" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="宁夏回族自治区" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="新疆维吾尔自治区" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="香港特别行政区" />
+
+        <one.diao.com.a10_layout.view.ColoredTextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="澳门特别行政区" />
+
+    </one.diao.com.a10_layout.view.TagLayout>
 </LinearLayout>

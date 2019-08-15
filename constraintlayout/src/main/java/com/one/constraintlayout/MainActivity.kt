@@ -13,8 +13,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main)
 
+
      val linearLayout =    findViewById<LinearLayout>(R.id.root)
-        packageManager.getPackageInfo(packageName,PackageManager.GET_ACTIVITIES).activities.forEach {
+        packageManager.getPackageInfo(packageName, PackageManager.GET_ACTIVITIES).activities.forEach {
             activity ->
             if (activity.name == this::class.java.name) {
                 return@forEach
