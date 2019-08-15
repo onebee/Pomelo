@@ -77,7 +77,7 @@ public class ScaleImageView2 extends View implements GestureDetector.OnGestureLi
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
 
-        canvas.translate(offsetX, offsetY);
+        canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction);
 
         float scale = smallScale + (bigScale - smallScale) * scaleFraction;
         canvas.scale(scale, scale, getWidth() / 2f, getHeight() / 2f);
