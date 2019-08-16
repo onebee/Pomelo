@@ -10,13 +10,15 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.GestureDetector;
 import android.view.MotionEvent;
+import android.view.ScaleGestureDetector;
 import android.view.View;
 import android.widget.OverScroller;
 
 /**
  * @author diaokaibin@gmail.com on 2019-08-14.
  */
-public class ScaleImageView2 extends View implements GestureDetector.OnGestureListener, GestureDetector.OnDoubleTapListener, Runnable {
+public class ScaleImageView2 extends View {
+
 
 
     String TAG = "ScaleImageView2";
@@ -41,14 +43,24 @@ public class ScaleImageView2 extends View implements GestureDetector.OnGestureLi
     float offsetY;
 
     OverScroller mOverScroller;
+    OneGestureDetector detector;
+    OneDoubleTapListener doubleTapListener;
+    OneFilingRunnable filingRunnable;
+    ScaleGestureDetector scaleGestureDetector;
+
+    OneScaleListener scaleListener;
 
     public ScaleImageView2(Context context, AttributeSet attrs) {
         super(context, attrs);
+        detector = new OneGestureDetector();
+        filingRunnable = new OneFilingRunnable();
         bitmap = Utils.getAvatar(getResources(), (int) IMAGE_WIDTH);
-        mDetector = new GestureDetectorCompat(context, this);
-//        mDetector.setOnDoubleTapListener(this);
+        mDetector = new GestureDetectorCompat(context, detector);
+        doubleTapListener = new OneDoubleTapListener();
+//        mDetector.setOnDoubleTapListener(doubleTapListener);
 //        mDetector.setIsLongpressEnabled(false);
         mOverScroller = new OverScroller(context);
+        scaleGestureDetector = new ScaleGestureDetector(context,scaleListener);
     }
 
 
@@ -102,65 +114,81 @@ public class ScaleImageView2 extends View implements GestureDetector.OnGestureLi
         return scaleAnimator;
     }
 
-    /***
-     * 确认这个事件是不是被消费了 一般情况返回true
-     * @param
-     * @return
-     */
-    @Override
-    public boolean onDown(MotionEvent e) {
-        return true;
+
+    void refresh() {
+        mOverScroller.computeScrollOffset();
+        offsetX = mOverScroller.getCurrX();
+        offsetY = mOverScroller.getCurrY();
+        invalidate();
     }
 
-    @Override
-    public void onShowPress(MotionEvent e) {
-
+    private void fixOffset() {
+        offsetX = Math.min(offsetX, (bitmap.getWidth() * bigScale - getWidth()) / 2);
+        offsetX = Math.max(offsetX, -(bitmap.getWidth() * bigScale - getWidth()) / 2);
+        offsetY = Math.min(offsetY, (bitmap.getHeight() * bigScale - getHeight()) / 2);
+        offsetY = Math.max(offsetY, -(bitmap.getHeight() * bigScale - getHeight()) / 2);
     }
 
-    /***
-     * 单击抬起
-     * @param
-     * @return
-     */
-    @Override
-    public boolean onSingleTapUp(MotionEvent e) {
-        return false;
-    }
 
-    @Override
-    public boolean onScroll(MotionEvent down, MotionEvent event, float distanceX, float distanceY) {
+    class OneGestureDetector implements GestureDetector.OnGestureListener {
 
-        Log.i(TAG, " distanceX : " + distanceX);
-        Log.i(TAG, " distanceY : " + distanceY);
-        if (big) {
-            offsetX -= distanceX;
-            // 最大不能大于图片放大后的宽度减去屏幕宽度的一半, 所以取两者之间的小值
-            offsetX = Math.min(offsetX, (bitmap.getWidth() * bigScale - getWidth()) / 2);
-            offsetX = Math.max(offsetX, -(bitmap.getWidth() * bigScale - getWidth()) / 2);
 
-            offsetY -= distanceY;
-            offsetY = Math.min(offsetY, (bitmap.getHeight() * bigScale - getHeight()) / 2);
-            offsetY = Math.max(offsetY, -(bitmap.getHeight() * bigScale - getHeight()) / 2);
-            invalidate();
+        /***
+         * 确认这个事件是不是被消费了 一般情况返回true
+         * @param
+         * @return
+         */
+        @Override
+        public boolean onDown(MotionEvent e) {
+            return true;
         }
-        return false;
-    }
 
-    @Override
-    public void onLongPress(MotionEvent e) {
+        @Override
+        public void onShowPress(MotionEvent e) {
 
-    }
+        }
 
-    @Override
-    public boolean onFling(MotionEvent down, MotionEvent event, float velocityX, float velocityY) {
-        if (big) {
-            mOverScroller.fling((int) offsetX, (int) offsetY, (int) velocityX, (int) velocityY,
-                    -(int) (bitmap.getWidth() * bigScale - getWidth()) / 2,
-                    (int) (bitmap.getWidth() * bigScale - getWidth()) / 2,
-                    -(int) (bitmap.getHeight() * bigScale - getHeight()) / 2,
-                    (int) (bitmap.getHeight() * bigScale - getHeight()) / 2
+        /***
+         * 单击抬起
+         * @param
+         * @return
+         */
+        @Override
+        public boolean onSingleTapUp(MotionEvent e) {
+            return false;
+        }
 
-            );
+        @Override
+        public boolean onScroll(MotionEvent down, MotionEvent event, float distanceX, float distanceY) {
+
+            Log.i(TAG, " distanceX : " + distanceX);
+            Log.i(TAG, " distanceY : " + distanceY);
+            if (big) {
+                offsetX -= distanceX;
+                // 最大不能大于图片放大后的宽度减去屏幕宽度的一半, 所以取两者之间的小值
+                offsetY -= distanceY;
+                fixOffset();
+                invalidate();
+            }
+            return false;
+        }
+
+
+        @Override
+        public void onLongPress(MotionEvent e) {
+
+        }
+
+        @Override
+        public boolean onFling(MotionEvent down, MotionEvent event, float velocityX, float velocityY) {
+            if (big) {
+                mOverScroller.fling((int) offsetX, (int) offsetY, (int) velocityX, (int) velocityY,
+                        -(int) (bitmap.getWidth() * bigScale - getWidth()) / 2,
+                        (int) (bitmap.getWidth() * bigScale - getWidth()) / 2,
+                        -(int) (bitmap.getHeight() * bigScale - getHeight()) / 2,
+                        (int) (bitmap.getHeight() * bigScale - getHeight()) / 2
+
+                );
 
 //            for (int i = 10; i < 100; i += 10) {
 //                postDelayed(new Runnable() {
@@ -171,55 +199,77 @@ public class ScaleImageView2 extends View implements GestureDetector.OnGestureLi
 //                }, i);
 //            }
 
-            postOnAnimation(this);
+                postOnAnimation(filingRunnable);
 
 
+            }
+            return false;
         }
-        return false;
     }
-
-    void refresh() {
-        mOverScroller.computeScrollOffset();
-        offsetX = mOverScroller.getCurrX();
-        offsetY = mOverScroller.getCurrY();
-        invalidate();
-    }
-
 
     /**********************************************************/
-    @Override
-    public boolean onSingleTapConfirmed(MotionEvent e) {
-        return false;
-    }
 
-    @Override
-    public boolean onDoubleTap(MotionEvent e) {
-        big = !big;
-        if (big) {
-            getScaleAnimator().setDuration(1000).start();
-        } else {
-            getScaleAnimator().setDuration(1000).reverse();
+
+    class OneDoubleTapListener implements GestureDetector.OnDoubleTapListener {
+        @Override
+        public boolean onSingleTapConfirmed(MotionEvent e) {
+            return false;
         }
+
+        @Override
+        public boolean onDoubleTap(MotionEvent e) {
+            big = !big;
+            if (big) {
+                offsetX = (e.getX() - getWidth() / 2f) - (e.getX() - getWidth() / 2f) * bigScale / smallScale;
+                offsetY = (e.getY() - getHeight() / 2f) - (e.getY() - getHeight() / 2f) * bigScale / smallScale;
+                fixOffset();
+                getScaleAnimator().setDuration(1000).start();
+            } else {
+                getScaleAnimator().setDuration(1000).reverse();
+            }
 //        invalidate();
-        return false;
-    }
-
-    @Override
-    public boolean onDoubleTapEvent(MotionEvent e) {
-        return false;
-    }
-
-
-    @Override
-    public void run() {
-
-        if (mOverScroller.computeScrollOffset()) {
-            offsetX = mOverScroller.getCurrX();
-            offsetY = mOverScroller.getCurrY();
-            invalidate();
-            postOnAnimation(this);
+            return false;
         }
 
-
+        @Override
+        public boolean onDoubleTapEvent(MotionEvent e) {
+            return false;
+        }
     }
+
+    class OneFilingRunnable implements Runnable {
+
+        @Override
+        public void run() {
+
+            if (mOverScroller.computeScrollOffset()) {
+                offsetX = mOverScroller.getCurrX();
+                offsetY = mOverScroller.getCurrY();
+                invalidate();
+                postOnAnimation(this);
+            }
+
+
+        }
+    }
+
+    class OneScaleListener implements ScaleGestureDetector.OnScaleGestureListener{
+
+        @Override
+        public boolean onScale(ScaleGestureDetector detector) {
+           scaleFraction =  detector.getScaleFactor();
+            return false;
+        }
+
+        @Override
+        public boolean onScaleBegin(ScaleGestureDetector detector) {
+            return true;
+        }
+
+        @Override
+        public void onScaleEnd(ScaleGestureDetector detector) {
+
+        }
+    }
+
 }
