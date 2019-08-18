@@ -82,7 +82,11 @@ public class ScaleImageView2 extends View {
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return scaleGestureDetector.onTouchEvent(event);
+        boolean result = scaleGestureDetector.onTouchEvent(event);
+        if (!scaleGestureDetector.isInProgress()) {
+          result =  mDetector.onTouchEvent(event);
+        }
+        return result;
     }
 
     @Override
