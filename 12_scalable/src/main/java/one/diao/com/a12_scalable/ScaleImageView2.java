@@ -43,20 +43,18 @@ public class ScaleImageView2 extends View {
     float offsetY;
 
     OverScroller mOverScroller;
-    OneGestureDetector detector;
-    OneDoubleTapListener doubleTapListener;
-    OneFilingRunnable filingRunnable;
+    OneGestureDetectorListener mDetectorListener = new OneGestureDetectorListener();;
+//    OneDoubleTapListener doubleTapListener;
+    OneFilingRunnable filingRunnable = new OneFilingRunnable();;
     ScaleGestureDetector scaleGestureDetector;
 
     OneScaleListener scaleListener;
 
     public ScaleImageView2(Context context, AttributeSet attrs) {
         super(context, attrs);
-        detector = new OneGestureDetector();
-        filingRunnable = new OneFilingRunnable();
         bitmap = Utils.getAvatar(getResources(), (int) IMAGE_WIDTH);
-        mDetector = new GestureDetectorCompat(context, detector);
-        doubleTapListener = new OneDoubleTapListener();
+        mDetector = new GestureDetectorCompat(context, mDetectorListener);
+//        doubleTapListener = new OneDoubleTapListener();
 //        mDetector.setOnDoubleTapListener(doubleTapListener);
 //        mDetector.setIsLongpressEnabled(false);
         mOverScroller = new OverScroller(context);
@@ -130,7 +128,7 @@ public class ScaleImageView2 extends View {
     }
 
 
-    class OneGestureDetector implements GestureDetector.OnGestureListener {
+    class OneGestureDetectorListener extends GestureDetector.SimpleOnGestureListener {
 
 
         /***
@@ -205,16 +203,6 @@ public class ScaleImageView2 extends View {
             }
             return false;
         }
-    }
-
-    /**********************************************************/
-
-
-    class OneDoubleTapListener implements GestureDetector.OnDoubleTapListener {
-        @Override
-        public boolean onSingleTapConfirmed(MotionEvent e) {
-            return false;
-        }
 
         @Override
         public boolean onDoubleTap(MotionEvent e) {
@@ -231,11 +219,10 @@ public class ScaleImageView2 extends View {
             return false;
         }
 
-        @Override
-        public boolean onDoubleTapEvent(MotionEvent e) {
-            return false;
-        }
     }
+
+    /**********************************************************/
+
 
     class OneFilingRunnable implements Runnable {
 
