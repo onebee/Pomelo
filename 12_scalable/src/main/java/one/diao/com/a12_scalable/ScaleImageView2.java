@@ -20,7 +20,6 @@ import android.widget.OverScroller;
 public class ScaleImageView2 extends View {
 
 
-
     String TAG = "ScaleImageView2";
     // 放大系数
     public static final float OVER_SCALE_FACTOR = 1.5f;
@@ -33,7 +32,7 @@ public class ScaleImageView2 extends View {
     float originOffsetY;
     float smallScale;
     float bigScale;
-    float scaleFraction; //0-1
+    float currentScale; //0-1
     ObjectAnimator scaleAnimator;
 
 
@@ -43,12 +42,14 @@ public class ScaleImageView2 extends View {
     float offsetY;
 
     OverScroller mOverScroller;
-    OneGestureDetectorListener mDetectorListener = new OneGestureDetectorListener();;
-//    OneDoubleTapListener doubleTapListener;
-    OneFilingRunnable filingRunnable = new OneFilingRunnable();;
+    OneGestureDetectorListener mDetectorListener = new OneGestureDetectorListener();
+    ;
+    //    OneDoubleTapListener doubleTapListener;
+    OneFilingRunnable filingRunnable = new OneFilingRunnable();
+    ;
     ScaleGestureDetector scaleGestureDetector;
 
-    OneScaleListener scaleListener;
+    OneScaleListener scaleListener = new OneScaleListener();
 
     public ScaleImageView2(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -58,7 +59,7 @@ public class ScaleImageView2 extends View {
 //        mDetector.setOnDoubleTapListener(doubleTapListener);
 //        mDetector.setIsLongpressEnabled(false);
         mOverScroller = new OverScroller(context);
-        scaleGestureDetector = new ScaleGestureDetector(context,scaleListener);
+        scaleGestureDetector = new ScaleGestureDetector(context, scaleListener);
     }
 
 
@@ -75,40 +76,43 @@ public class ScaleImageView2 extends View {
             smallScale = (float) getHeight() / bitmap.getHeight();
             bigScale = (float) getWidth() / bitmap.getWidth() * OVER_SCALE_FACTOR;
         }
+        currentScale = smallScale;
 
     }
 
     @Override
     public boolean onTouchEvent(MotionEvent event) {
-        return mDetector.onTouchEvent(event);
+        return scaleGestureDetector.onTouchEvent(event);
     }
 
     @Override
     protected void onDraw(Canvas canvas) {
         super.onDraw(canvas);
-
+        float scaleFraction = (currentScale - smallScale) / (bigScale - smallScale);
         canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction);
 
-        float scale = smallScale + (bigScale - smallScale) * scaleFraction;
-        canvas.scale(scale, scale, getWidth() / 2f, getHeight() / 2f);
+//        float scale = smallScale + (bigScale - smallScale) * scaleFraction;
+        canvas.scale(currentScale, currentScale, getWidth() / 2f, getHeight() / 2f);
         canvas.drawBitmap(bitmap, originOffsetX, originOffsetY, mPaint);
 
     }
 
-    public float getScaleFraction() {
-        return scaleFraction;
+    public float getCurrentScale() {
+        return currentScale;
     }
 
-    public void setScaleFraction(float scaleFraction) {
-        this.scaleFraction = scaleFraction;
+    public void setCurrentScale(float currentScale) {
+        this.currentScale = currentScale;
         invalidate();
     }
 
 
     private ObjectAnimator getScaleAnimator() {
         if (scaleAnimator == null) {
-            scaleAnimator = ObjectAnimator.ofFloat(this, "scaleFraction", 0, 1);
+            scaleAnimator = ObjectAnimator.ofFloat(this, "currentScale", 0, 1);
         }
+
+        scaleAnimator.setFloatValues(smallScale, bigScale);
         return scaleAnimator;
     }
 
@@ -240,16 +244,20 @@ public class ScaleImageView2 extends View {
         }
     }
 
-    class OneScaleListener implements ScaleGestureDetector.OnScaleGestureListener{
+    class OneScaleListener implements ScaleGestureDetector.OnScaleGestureListener {
+
+        float initialScale;
 
         @Override
         public boolean onScale(ScaleGestureDetector detector) {
-           scaleFraction =  detector.getScaleFactor();
+            currentScale = initialScale * detector.getScaleFactor();
+            invalidate();
             return false;
         }
 
         @Override
         public boolean onScaleBegin(ScaleGestureDetector detector) {
+            initialScale = currentScale;
             return true;
         }
 
