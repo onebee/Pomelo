@@ -43,10 +43,8 @@ public class ScaleImageView2 extends View {
 
     OverScroller mOverScroller;
     OneGestureDetectorListener mDetectorListener = new OneGestureDetectorListener();
-    ;
     //    OneDoubleTapListener doubleTapListener;
     OneFilingRunnable filingRunnable = new OneFilingRunnable();
-    ;
     ScaleGestureDetector scaleGestureDetector;
 
     OneScaleListener scaleListener = new OneScaleListener();
@@ -84,7 +82,7 @@ public class ScaleImageView2 extends View {
     public boolean onTouchEvent(MotionEvent event) {
         boolean result = scaleGestureDetector.onTouchEvent(event);
         if (!scaleGestureDetector.isInProgress()) {
-          result =  mDetector.onTouchEvent(event);
+            result = mDetector.onTouchEvent(event);
         }
         return result;
     }
