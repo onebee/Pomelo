@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<one.diao.com.a13_multi_touch.MultitouchView22
+<one.diao.com.a13_multi_touch.MultitouchView23
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#770E0C0C"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -8,4 +8,4 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-</one.diao.com.a13_multi_touch.MultitouchView22>
+</one.diao.com.a13_multi_touch.MultitouchView23>
