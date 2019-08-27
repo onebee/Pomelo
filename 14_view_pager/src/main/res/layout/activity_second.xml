@@ -7,32 +7,32 @@
     android:background="@android:color/holo_blue_bright">
 
 
-    <LinearLayout
+    <one.diao.com.a14_view_pager.ScrollerLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="100dp"
         android:orientation="horizontal">
 
         <Button
             android:id="@+id/btn_scroll_to"
             android:onClick="click"
             android:text="ScrollTo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <Button
             android:id="@+id/btn_scroll_by"
             android:onClick="click"
             android:text="ScrollBy"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
 
         <Button
             android:id="@+id/btn_sping_back"
             android:onClick="click"
             android:text="spingBack"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
-    </LinearLayout>
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"/>
+    </one.diao.com.a14_view_pager.ScrollerLayout>
 
     <one.diao.com.a14_view_pager.JellyTextView
         android:textSize="16sp"

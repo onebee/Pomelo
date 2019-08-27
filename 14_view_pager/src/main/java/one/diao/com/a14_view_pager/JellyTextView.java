@@ -44,7 +44,10 @@ public class JellyTextView extends android.support.v7.widget.AppCompatTextView {
                 lastY = event.getRawY();
                 break;
             case MotionEvent.ACTION_UP:
-                mScroller.startScroll((int) getX(), (int) getY(), -(int) (getX() - startX),
+                mScroller.startScroll(
+                        (int) getX(),
+                        (int) getY(),
+                        -(int) (getX() - startX),
                         -(int) (getY() - startY));
                 invalidate();
                 break;
@@ -60,6 +63,7 @@ public class JellyTextView extends android.support.v7.widget.AppCompatTextView {
         if (mScroller.computeScrollOffset()) {
             setX(mScroller.getCurrX());
             setY(mScroller.getCurrY());
+
             invalidate();
         }
 
