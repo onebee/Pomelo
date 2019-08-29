@@ -59,16 +59,20 @@ public class ScrollerLayout extends ViewGroup {
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
 
-        for (int i = 0; i < getChildCount(); i++) {
-            View child = getChildAt(i);
-            child.layout(
-                    child.getMeasuredWidth() * i,
-                    0,
-                    child.getMeasuredWidth() * (i + 1),
-                    child.getMeasuredHeight());
+        if (changed) {
+            for (int i = 0; i < getChildCount(); i++) {
+                View child = getChildAt(i);
+                child.layout(
+                        child.getMeasuredWidth() * i,
+                        0,
+                        child.getMeasuredWidth() * (i + 1),
+                        child.getMeasuredHeight());
+            }
+            leftBorder = getChildAt(0).getLeft();
+            rightBorder = getChildAt(getChildCount() - 1).getRight();
         }
-        leftBorder = getChildAt(0).getLeft();
-        rightBorder = getChildAt(getChildCount() - 1).getRight();
+
+
     }
 
     @Override
@@ -87,7 +91,7 @@ public class ScrollerLayout extends ViewGroup {
                 float diff = Math.abs(moveX - downX);
                 lastMoveX = moveX;
                 if (diff > mTouchSlop) {
-                    return  true;
+                    return true;
                 }
 
                 break;
@@ -101,20 +105,43 @@ public class ScrollerLayout extends ViewGroup {
     public boolean onTouchEvent(MotionEvent event) {
         switch (event.getActionMasked()) {
             case MotionEvent.ACTION_MOVE:
+                downX = event.getRawX();
+                int scrolledX = (int) (lastMoveX - moveX);
+
+                if (getScrollX() + scrolledX < leftBorder) {
+                    scrollTo(leftBorder, 0);
+                    return true;
+                } else if (getScrollX() + getWidth() + scrolledX > rightBorder) {
+                    scrollTo(rightBorder - getWidth(), 0);
+                    return true;
+                }
+                scrollBy(scrolledX, 0);
+                lastMoveX = moveX;
+
+                break;
+
+            case MotionEvent.ACTION_UP:
+
+
+                // 当手指抬起时，根据当前的滚动值来判定应该滚动到哪个子控件的界面
+                int targetIndex = (getScrollX() + getWidth() / 2) / getWidth();
+                int dx = targetIndex * getWidth() - getScrollX();
+                // 第二步，调用startScroll()方法来初始化滚动数据并刷新界面
+                mScroller.startScroll(getScrollX(), 0, dx, 0);
+                postInvalidateOnAnimation();
                 break;
         }
         return super.onTouchEvent(event);
     }
 
-    @Override
-    public void setOnTouchListener(OnTouchListener l) {
-        super.setOnTouchListener(l);
-
-    }
 
     @Override
     public void computeScroll() {
-        super.computeScroll();
+//        super.computeScroll();
+        if (mScroller.computeScrollOffset()) {
+            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+            postInvalidateOnAnimation();
+        }
 
     }
 }

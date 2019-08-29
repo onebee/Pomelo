@@ -36,6 +36,7 @@ public class JellyTextView extends android.support.v7.widget.AppCompatTextView {
                 break;
             case MotionEvent.ACTION_MOVE:
                 float disX = event.getRawX() - lastX;
+
                 float disY = event.getRawY() - lastY;
 
                 offsetLeftAndRight((int) disX);
