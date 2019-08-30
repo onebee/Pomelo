@@ -5,6 +5,7 @@ import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.widget.ViewDragHelper;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewConfiguration;
@@ -47,11 +48,51 @@ public class DragUpDownLayout2 extends FrameLayout {
         return true;
     }
 
+    @Override
+    public void computeScroll() {
+        if (mViewDragHelper.continueSettling(true)) {
+//            ViewCompat.postInvalidateOnAnimation(this);
+            postInvalidateOnAnimation();
+        }
+
+    }
+
     class DragListener extends ViewDragHelper.Callback {
 
         @Override
         public boolean tryCaptureView(@NonNull View view, int i) {
-            return false;
+            return mView == view;
+        }
+
+        @Override
+        public int clampViewPositionVertical(@NonNull View child, int top, int dy) {
+            return top;
+        }
+
+        @Override
+        public void onViewReleased(@NonNull View releasedChild, float xvel, float yvel) {
+            super.onViewReleased(releasedChild, xvel, yvel);
+            int minimumFlingVelocity = mConfiguration.getScaledMinimumFlingVelocity();
+            Log.d("----"," yvel : " + yvel + " ------ minimumFlingVelocity : " + minimumFlingVelocity);
+            if (Math.abs(yvel) > mConfiguration.getScaledMinimumFlingVelocity()) {
+                if (yvel > 0) {
+                    mViewDragHelper.settleCapturedViewAt(0, getHeight() - releasedChild.getHeight());
+                } else {
+                    mViewDragHelper.settleCapturedViewAt(0, 0);
+                }
+
+            } else {
+
+                if (releasedChild.getTop() < getHeight() - releasedChild.getBottom()) {
+                    mViewDragHelper.settleCapturedViewAt(0, 0);
+                } else {
+                    mViewDragHelper.settleCapturedViewAt(0, getHeight() - releasedChild.getHeight());
+                }
+
+            }
+
+            postInvalidateOnAnimation();
+
         }
     }
 }
