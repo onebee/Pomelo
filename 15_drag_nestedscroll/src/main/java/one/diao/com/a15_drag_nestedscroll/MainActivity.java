@@ -8,7 +8,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.drag_up_down);
+        setContentView(R.layout.drag_to_collect);
 
 //        SystemClock.sleep(2000);
     }
