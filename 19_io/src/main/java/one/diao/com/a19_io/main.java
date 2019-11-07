@@ -39,8 +39,23 @@ public class main {
 
     public static void main(String[] args) {
 
+        test1();
+//        okio2();
+    }
 
-        okio2();
+    private static void test1() {
+        OutputStream outputStream = null;
+        try {
+            outputStream = new FileOutputStream("./19_io/text.txt");
+            outputStream.write('a');
+            outputStream.write('b');
+            outputStream.write('c');
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
     private static void okio2() {

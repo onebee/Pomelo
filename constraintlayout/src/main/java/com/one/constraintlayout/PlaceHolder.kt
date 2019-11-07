@@ -1,8 +1,8 @@
 package com.one.constraintlayout
 
 import android.os.Bundle
-import android.support.constraint.Placeholder
-import android.support.v7.app.AppCompatActivity
+import androidx.constraintlayout.widget.Placeholder
+import androidx.appcompat.app.AppCompatActivity
 import android.transition.TransitionManager
 import android.view.View
 import android.view.ViewGroup

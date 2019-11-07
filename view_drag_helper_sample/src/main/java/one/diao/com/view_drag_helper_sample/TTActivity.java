@@ -3,7 +3,7 @@ package one.diao.com.view_drag_helper_sample;
 import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;

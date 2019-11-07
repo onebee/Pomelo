@@ -30,10 +30,12 @@
             <option value="$PROJECT_DIR$/28_annotation_processing" />
             <option value="$PROJECT_DIR$/28_lib_reflection" />
             <option value="$PROJECT_DIR$/constraintlayout" />
+            <option value="$PROJECT_DIR$/rxjavasample" />
             <option value="$PROJECT_DIR$/view_drag_helper_sample" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
+        <option name="testRunner" value="PLATFORM" />
       </GradleProjectSettings>
     </option>
   </component>

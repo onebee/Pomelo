@@ -1,11 +1,11 @@
 package com.one.constraintlayout
 
 import android.os.Bundle
-import android.support.v7.app.AppCompatActivity
+import androidx.appcompat.app.AppCompatActivity
 import android.widget.ImageView
 import android.animation.ValueAnimator
 import android.animation.ValueAnimator.INFINITE
-import android.support.constraint.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import android.view.animation.LinearInterpolator
 
 

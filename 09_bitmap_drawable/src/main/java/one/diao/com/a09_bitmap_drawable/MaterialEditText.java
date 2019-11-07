@@ -15,7 +15,7 @@ import android.util.Log;
 /**
  * @author diaokaibin@gmail.com on 2019-07-23.
  */
-public class MaterialEditText extends android.support.v7.widget.AppCompatEditText {
+public class MaterialEditText extends androidx.appcompat.widget.AppCompatEditText {
 
     private final static float TEXT_SIZE = Utils.dp2px(15);
     private final static float TEXT_MARGIN = Utils.dp2px(5);

@@ -2,7 +2,7 @@ package one.diao.com.a15_drag_nestedscroll.view.drag;
 
 import android.content.ClipData;
 import android.content.Context;
-import android.support.v4.view.ViewCompat;
+import androidx.core.view.ViewCompat;
 import android.util.AttributeSet;
 import android.view.DragEvent;
 import android.view.View;

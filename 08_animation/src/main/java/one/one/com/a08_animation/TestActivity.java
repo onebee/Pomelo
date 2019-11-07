@@ -7,8 +7,8 @@ import android.animation.ObjectAnimator;
 import android.animation.TypeEvaluator;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 /**
  * @author diaokaibin@gmail.com on 2019-07-17.

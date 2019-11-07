@@ -21,7 +21,9 @@
             android:layout_height="120dp"
             android:layout_weight="1"
             android:src="@drawable/google_logo"
-            android:contentDescription="Logo" />
+            android:contentDescription="Logo"
+
+            />
     </LinearLayout>
 
     <LinearLayout

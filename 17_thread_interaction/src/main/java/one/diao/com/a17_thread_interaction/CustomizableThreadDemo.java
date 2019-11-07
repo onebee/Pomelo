@@ -33,7 +33,7 @@ public class CustomizableThreadDemo implements TestDemo {
             e.printStackTrace();
         }
 
-        thread.looper.quit();
+//        thread.looper.quit();
     }
 
     class CustomThread extends Thread {
@@ -52,6 +52,7 @@ public class CustomizableThreadDemo implements TestDemo {
 
         synchronized void setTask(Runnable task) {
             this.task = task;
+            loop();
         }
 
         synchronized void quit() {

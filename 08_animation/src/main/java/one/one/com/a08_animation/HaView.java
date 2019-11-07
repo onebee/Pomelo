@@ -4,13 +4,13 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
 import android.util.AttributeSet;
 
 /**
  * @author diaokaibin@gmail.com on 2019/1/24.
  */
-public class HaView extends android.support.v7.widget.AppCompatTextView {
+public class HaView extends androidx.appcompat.widget.AppCompatTextView {
 
 
     private float TEXT_SIZE_SMALL = Utils.dp2px(25);

@@ -10,7 +10,7 @@ import android.widget.OverScroller;
 /**
  * @author diaokaibin@gmail.com on 2019-08-27.
  */
-public class JellyTextView extends android.support.v7.widget.AppCompatTextView {
+public class JellyTextView extends androidx.appcompat.widget.AppCompatTextView {
 
     private OverScroller mScroller;
 
@@ -43,6 +43,10 @@ public class JellyTextView extends android.support.v7.widget.AppCompatTextView {
                 offsetTopAndBottom((int) disY);
                 lastX = event.getRawX();
                 lastY = event.getRawY();
+
+                int top = getTop();
+                int left = getLeft();
+                Log.i("-----", " left : " + left + "    top : " + top);
                 break;
             case MotionEvent.ACTION_UP:
                 mScroller.startScroll(
@@ -64,6 +68,8 @@ public class JellyTextView extends android.support.v7.widget.AppCompatTextView {
         if (mScroller.computeScrollOffset()) {
             setX(mScroller.getCurrX());
             setY(mScroller.getCurrY());
+//            scrollTo(mScroller.getCurrX(), mScroller.getCurrY());
+//           scrollTo((int)mScroller.getCurrX(), mScroller.getCurrY());
 
             invalidate();
         }
