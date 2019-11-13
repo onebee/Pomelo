@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:id="@+id/linearLayout1" android:layout_width="match_parent" android:layout_height="match_parent" android:layout_alignParentLeft="true" android:layout_alignParentTop="true">
+    <Button android:id="@+id/ButtonSetup" android:layout_width="match_parent" android:layout_height="0dp" android:text="Setup" android:layout_weight="1"/>
+    <Button android:id="@+id/ButtonConsole" android:layout_width="match_parent" android:layout_height="0dp" android:text="Console" android:layout_weight="1"/>
+    <Button android:id="@+id/ButtonLoopback" android:layout_width="match_parent" android:layout_height="0dp" android:text="Loopback" android:layout_weight="1"/>
+    <Button android:id="@+id/Button01010101" android:layout_width="match_parent" android:layout_height="0dp" android:text="Send 01010101" android:layout_weight="1"/>
+    <Button android:id="@+id/ButtonAbout" android:layout_width="match_parent" android:layout_height="0dp" android:text="About" android:layout_weight="1"/>
+    <Button android:id="@+id/ButtonQuit" android:layout_width="match_parent" android:layout_height="0dp" android:text="Quit" android:layout_weight="1"/>
+</LinearLayout>

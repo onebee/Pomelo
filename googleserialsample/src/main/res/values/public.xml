@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <public type="drawable" name="icon" id="2130837504" />
+    <public type="layout" name="console" id="2130903040" />
+    <public type="layout" name="loopback" id="2130903041" />
+    <public type="layout" name="main" id="2130903042" />
+    <public type="layout" name="sending01010101" id="2130903043" />
+    <public type="xml" name="serial_port_preferences" id="2130968576" />
+    <public type="array" name="baudrates_name" id="2131034112" />
+    <public type="array" name="baudrates_value" id="2131034113" />
+    <public type="string" name="app_name" id="2131099648" />
+    <public type="string" name="about_msg" id="2131099649" />
+    <public type="string" name="error_configuration" id="2131099650" />
+    <public type="string" name="error_security" id="2131099651" />
+    <public type="string" name="error_unknown" id="2131099652" />
+    <public type="id" name="EditTextReception" id="2131165184" />
+    <public type="id" name="EditTextEmission" id="2131165185" />
+    <public type="id" name="LinearLayoutOutgoing" id="2131165186" />
+    <public type="id" name="TextViewOutgoing" id="2131165187" />
+    <public type="id" name="TextViewOutgoingValue" id="2131165188" />
+    <public type="id" name="LinearLayoutReceived" id="2131165189" />
+    <public type="id" name="TextViewIncoming" id="2131165190" />
+    <public type="id" name="TextViewIncomingValue" id="2131165191" />
+    <public type="id" name="linearLayoutLost" id="2131165192" />
+    <public type="id" name="textViewLost" id="2131165193" />
+    <public type="id" name="textViewLostValue" id="2131165194" />
+    <public type="id" name="linearLayoutCorrupted" id="2131165195" />
+    <public type="id" name="textViewCorrupted" id="2131165196" />
+    <public type="id" name="textViewCorruptedValue" id="2131165197" />
+    <public type="id" name="linearLayout1" id="2131165198" />
+    <public type="id" name="ButtonSetup" id="2131165199" />
+    <public type="id" name="ButtonConsole" id="2131165200" />
+    <public type="id" name="ButtonLoopback" id="2131165201" />
+    <public type="id" name="Button01010101" id="2131165202" />
+    <public type="id" name="ButtonAbout" id="2131165203" />
+    <public type="id" name="ButtonQuit" id="2131165204" />
+    <public type="id" name="textView1" id="2131165205" />
+</resources>

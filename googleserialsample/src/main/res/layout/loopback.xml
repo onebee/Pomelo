@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="wrap_content" android:keepScreenOn="true">
+    <LinearLayout android:orientation="horizontal" android:id="@+id/LinearLayoutOutgoing" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="24px" android:id="@+id/TextViewOutgoing" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Sent bytes" android:layout_weight="1"/>
+        <TextView android:textSize="24px" android:id="@+id/TextViewOutgoingValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0"/>
+    </LinearLayout>
+    <LinearLayout android:orientation="horizontal" android:id="@+id/LinearLayoutReceived" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="24px" android:id="@+id/TextViewIncoming" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Received back" android:layout_weight="1"/>
+        <TextView android:textSize="24px" android:id="@+id/TextViewIncomingValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayoutLost" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="24px" android:id="@+id/textViewLost" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Lost bytes" android:layout_weight="1"/>
+        <TextView android:textSize="24px" android:id="@+id/textViewLostValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0"/>
+    </LinearLayout>
+    <LinearLayout android:id="@+id/linearLayoutCorrupted" android:layout_width="match_parent" android:layout_height="wrap_content">
+        <TextView android:textSize="24px" android:id="@+id/textViewCorrupted" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="Corrupted bytes" android:layout_weight="1"/>
+        <TextView android:textSize="24px" android:id="@+id/textViewCorruptedValue" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="0"/>
+    </LinearLayout>
+</LinearLayout>
