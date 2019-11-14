@@ -1,11 +1,15 @@
 package android_serialport_api.sample;
 
 import android.content.SharedPreferences;
-import android_serialport_api.SerialPort;
-import android_serialport_api.SerialPortFinder;
+
+import com.facebook.stetho.Stetho;
+
 import java.io.File;
 import java.io.IOException;
 import java.security.InvalidParameterException;
+
+import android_serialport_api.SerialPort;
+import android_serialport_api.SerialPortFinder;
 
 public class Application extends android.app.Application {
     private SerialPort mSerialPort = null;
@@ -24,10 +28,19 @@ public class Application extends android.app.Application {
         return this.mSerialPort;
     }
 
+
     public void closeSerialPort() {
         if (this.mSerialPort != null) {
             this.mSerialPort.close();
             this.mSerialPort = null;
         }
+    }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+
+
+        Stetho.initializeWithDefaults(this);
     }
 }

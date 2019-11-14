@@ -1,5 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android" android:orientation="vertical" android:layout_width="match_parent" android:layout_height="match_parent" android:keepScreenOn="true">
-    <EditText android:scrollbarStyle="insideOverlay" android:gravity="top" android:id="@+id/EditTextReception" android:layout_width="match_parent" android:layout_height="match_parent" android:hint="Reception" android:layout_weight="1" android:isScrollContainer="true"/>
-    <EditText android:id="@+id/EditTextEmission" android:layout_width="match_parent" android:layout_height="wrap_content" android:hint="Emission" android:lines="1"/>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:keepScreenOn="true"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/EditTextReception"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:gravity="top"
+        android:hint="Reception"
+        android:isScrollContainer="true"
+        android:scrollbarStyle="insideOverlay" />
+
+    <EditText
+        android:id="@+id/EditTextEmission"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Emission"
+        android:lines="1" />
 </LinearLayout>
