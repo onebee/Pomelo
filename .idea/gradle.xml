@@ -30,6 +30,7 @@
             <option value="$PROJECT_DIR$/28_annation_processing" />
             <option value="$PROJECT_DIR$/28_annotation_processing" />
             <option value="$PROJECT_DIR$/28_lib_reflection" />
+            <option value="$PROJECT_DIR$/buildSrc" />
             <option value="$PROJECT_DIR$/constraintlayout" />
             <option value="$PROJECT_DIR$/googleserialsample" />
             <option value="$PROJECT_DIR$/rxjavasample" />
