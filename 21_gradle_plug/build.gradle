@@ -28,7 +28,8 @@ apply plugin: 'com.onebit.plugin'
 
 
 onebit {
-    name = 'diaokaibin'
+//    name = 'diaokaibin'
+    setName("kaibin")
 }
 
 android {

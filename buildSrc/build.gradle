@@ -7,4 +7,4 @@ dependencies {
 sourceCompatibility = "7"
 targetCompatibility = "7"
 
-println "i m src hhha "
+println "i m src hhha in plugin "
