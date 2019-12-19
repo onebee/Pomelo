@@ -34,6 +34,7 @@
             <option value="$PROJECT_DIR$/constraintlayout" />
             <option value="$PROJECT_DIR$/googleserialsample" />
             <option value="$PROJECT_DIR$/rxjavasample" />
+            <option value="$PROJECT_DIR$/touchsample" />
             <option value="$PROJECT_DIR$/view_drag_helper_sample" />
           </set>
         </option>
