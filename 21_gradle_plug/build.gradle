@@ -19,6 +19,7 @@ apply plugin: 'com.android.application'
 //}
 
 apply plugin: 'com.onebit.plugin'
+apply plugin: 'com.onebit.plugin2'
 
 
 //class ExtensionDesmo{
@@ -30,6 +31,11 @@ apply plugin: 'com.onebit.plugin'
 onebit {
 //    name = 'diaokaibin'
     setName("kaibin")
+}
+
+onebit2 {
+//    name = 'diaokaibin'
+    setName("kaibin is the best")
 }
 
 android {
