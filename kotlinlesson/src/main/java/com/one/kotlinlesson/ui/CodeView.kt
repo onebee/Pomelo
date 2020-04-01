@@ -15,30 +15,26 @@ import kotlin.random.Random
  * @author  diaokaibin@gmail.com on 2020/3/31.
  *
  */
-class CodeView : androidx.appcompat.widget.AppCompatTextView {
-
+class CodeView constructor(context: Context, attrs: AttributeSet?)  : androidx.appcompat.widget.AppCompatTextView(context, attrs) {
 
     constructor(context: Context) : this(context, null)
 
+    private var paint = Paint()
     // 调用了父类的构造器, 类名后面就不需要加括号了
-    constructor(context: Context, attrs: AttributeSet?) : super(context, attrs) {
+    init {
 
         setTextSize(TypedValue.COMPLEX_UNIT_SP, 18f)
         gravity = Gravity.CENTER
         setBackgroundColor(getContext().getColor(R.color.colorPrimary))
         setTextColor(Color.WHITE)
-
         paint.isAntiAlias = true
         paint.style = Paint.Style.STROKE;
         paint.color = getContext().getColor(R.color.colorAccent)
         paint.strokeWidth = dp2px(6f)
-
-
         updateCode()
 
     }
 
-    private var paint = Paint()
     private var codeList = arrayOf(
         "Kotlin",
         "android",
@@ -51,11 +47,9 @@ class CodeView : androidx.appcompat.widget.AppCompatTextView {
 
 
     fun updateCode() {
-
-        var random = Random.nextInt(codeList.size)
+        val random = Random.nextInt(codeList.size)
         val code = codeList[random]
         text = code
-
 
     }
 

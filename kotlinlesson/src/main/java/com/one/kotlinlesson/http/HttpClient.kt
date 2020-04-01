@@ -22,7 +22,6 @@ object HttpClient : OkHttpClient() {  // 里面没有构造,所以在这里加�
         return gson.fromJson(json, type)
     }
 
-
     fun <T> get(path: String?, type: Type, entityCallback: EntityCallback<T>) {
 
         val request = Request.Builder().url("https://api.hencoder.com/$path").build()

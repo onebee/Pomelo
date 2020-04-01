@@ -37,27 +37,18 @@ class LessonAdapter : RecyclerView.Adapter<LessonViewHolder>() {
      * 静态内部类
      */
     class LessonViewHolder internal constructor(itemView: View) :
-        BaseViewHolder(itemView) {
+            BaseViewHolder(itemView) {
         @RequiresApi(Build.VERSION_CODES.M)
         fun onBind(lesson: Lesson) {
-            var date: String? = lesson.data
-            if (date == null) {
-                date = "日期待定"
-            }
-            setText(R.id.tv_date, date)
+            setText(R.id.tv_date, lesson.data ?: "日期待定")
             setText(R.id.tv_content, lesson.content)
             val state = lesson.state
             if (state != null) {
                 setText(R.id.tv_state, state.stateName())
-                var colorRes: Int = R.color.playback
-                when (state) {
-                    Lesson.State.PLAYBACK -> {
-
-                        // 即使在 {} 中也是需要 break 的。
-                        colorRes = R.color.playback
-                    }
-                    Lesson.State.LIVE -> colorRes = R.color.live
-                    Lesson.State.WAIT -> colorRes = R.color.wait
+                val colorRes = when (state) {
+                    Lesson.State.PLAYBACK -> R.color.playback
+                    Lesson.State.LIVE -> R.color.live
+                    Lesson.State.WAIT -> R.color.wait
                 }
                 val backgroundColor: Int = itemView.context.getColor(colorRes)
                 getView<TextView>(R.id.tv_state).setBackgroundColor(backgroundColor)
@@ -65,12 +56,8 @@ class LessonAdapter : RecyclerView.Adapter<LessonViewHolder>() {
         }
 
         companion object {
-            open fun onCreate(parent: ViewGroup): LessonViewHolder {
-                return LessonViewHolder(
-                    LayoutInflater
-                        .from(parent.context)
-                        .inflate(R.layout.item_lesson, parent, false)
-                )
+            fun onCreate(parent: ViewGroup): LessonViewHolder {
+                return LessonViewHolder(LayoutInflater.from(parent.context).inflate(R.layout.item_lesson, parent, false))
             }
         }
     }

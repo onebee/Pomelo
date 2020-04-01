@@ -65,14 +65,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             CacheUtils.save(usernameKey, username)
             CacheUtils.save(passwordKey, password)
 
-            startActivity(Intent(this,LessonActivity::class.java))
+            startActivity(Intent(this, LessonActivity::class.java))
 
 
         }
     }
 
     private fun verify(user: User): Boolean {
-        if (user.username != null && user.username!!.length < 4) {
+        if (user.username?.length ?: 0 < 4) {
             Utils.toash("用户不合法")
             return false
         }
@@ -82,7 +82,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             return false
         }
 
-        return true;
+        return true
     }
 
 }

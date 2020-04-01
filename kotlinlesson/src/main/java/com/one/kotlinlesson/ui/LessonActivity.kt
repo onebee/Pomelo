@@ -7,34 +7,29 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.one.kotlinlesson.BaseView
 import com.one.kotlinlesson.R
 import com.one.kotlinlesson.entity.Lesson
+import kotlinx.android.synthetic.main.activity_lesson.*
 
 class LessonActivity : AppCompatActivity(), BaseView<LessonPresenter?>,
     Toolbar.OnMenuItemClickListener {
 
-
     private val presenter = LessonPresenter(this)
     private val lessonAdapter = LessonAdapter()
-    private lateinit var refreshLayout: SwipeRefreshLayout
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson)
-        val toolbar = findViewById<Toolbar>(R.id.toolbar)
+
         toolbar.inflateMenu(R.menu.menu_lesson)
         toolbar.setOnMenuItemClickListener(this)
 
-
-        val recyclerView = findViewById<RecyclerView>(R.id.list)
-        recyclerView.layoutManager = LinearLayoutManager(this)
-        recyclerView.adapter = lessonAdapter
-        recyclerView.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
-        refreshLayout = findViewById(R.id.swipe_refresh_layout)
-        refreshLayout.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener { presenter.fetchData() })
-        refreshLayout.isRefreshing = true
+        list.layoutManager = LinearLayoutManager(this)
+        list.adapter = lessonAdapter
+        list.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
+        swipe_refresh_layout.setOnRefreshListener(SwipeRefreshLayout.OnRefreshListener { presenter.fetchData() })
+        swipe_refresh_layout.isRefreshing = true
         presenter.fetchData()
 
     }
@@ -42,7 +37,7 @@ class LessonActivity : AppCompatActivity(), BaseView<LessonPresenter?>,
 
     fun showResult(lessons: List<Lesson>) {
         lessonAdapter.updateAndNotify(lessons)
-        refreshLayout.isRefreshing = false
+        swipe_refresh_layout.isRefreshing = false
     }
 
     override fun onMenuItemClick(item: MenuItem): Boolean {

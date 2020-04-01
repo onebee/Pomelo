@@ -3,17 +3,7 @@ package com.one.kotlinlesson.entity
 /**
  * @author  diaokaibin@gmail.com on 2020/3/31.
  */
-class Lesson {
-
-    var data: String? = null
-    var content: String? = null
-    var state: State? = null
-
-    constructor(data: String?, content: String?, state: State?) {
-        this.data = data
-        this.content = content
-        this.state = state
-    }
+data class Lesson(var data: String?, var content: String?, var state: State?) {
 
 
     enum class State {
