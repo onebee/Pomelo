@@ -56,7 +56,7 @@ class LessonPresenter {
                 playbackLessons.add(lesson)
 
             }
-            activity.showResult(lessons)
+            activity.showResult(playbackLessons)
         }
     }
 
