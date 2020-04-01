@@ -30,8 +30,8 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         codeView = findViewById(R.id.code_view)
 
-        et_username.setText("dddd")
-        et_password.setText("存储")
+        et_username.setText("dddd徐")
+        et_password.setText("存储发多少")
 
         val btn_login = findViewById<Button>(R.id.btn_login)
 

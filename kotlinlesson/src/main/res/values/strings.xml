@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">KotlinLesson</string>
+    <string name="show_playback">playback</string>
 </resources>

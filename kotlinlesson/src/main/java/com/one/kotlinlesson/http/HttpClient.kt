@@ -1,6 +1,7 @@
 package com.one.kotlinlesson.http
 
 import android.util.Log
+import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.google.gson.Gson
 import com.one.core.http.EntityCallback
 import okhttp3.*
@@ -13,20 +14,22 @@ import java.lang.reflect.Type
  */
 object HttpClient : OkHttpClient() {  // 里面没有构造,所以在这里加上括号
     private val gson = Gson()
+    private val builder = Builder()
+            .addNetworkInterceptor(StethoInterceptor())
+            .build()
+
     private fun <T> convert(json: String?, type: Type): T {
         return gson.fromJson(json, type)
     }
 
-    fun <T> get(path: String?, type: Type, entityCallback: EntityCallback<T>) {
-        val request = Request.Builder()
-            .url("https://api.hencoder.com/$path")
-            .build()
 
-        val newCall = this.newCall(request)
-        newCall.enqueue(object : Callback {
+    fun <T> get(path: String?, type: Type, entityCallback: EntityCallback<T>) {
+
+        val request = Request.Builder().url("https://api.hencoder.com/$path").build()
+        builder.newCall(request).enqueue(object : Callback {
             override fun onFailure(call: Call, e: IOException) {
                 entityCallback.onFailure("网络异常")
-                Log.e("------",e.message)
+                Log.e("------", e.message)
             }
 
             override fun onResponse(call: Call, response: Response) {
@@ -50,6 +53,7 @@ object HttpClient : OkHttpClient() {  // 里面没有构造,所以在这里加�
             }
 
         })
+
     }
 
 

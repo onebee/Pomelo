@@ -16,7 +16,7 @@ class LessonPresenter {
         /**
          * 编译器常量
          */
-        const val LESSON_PATH = "lesson"
+        const val LESSON_PATH = "lessons"
     }
 
     private val activity: LessonActivity
@@ -34,7 +34,6 @@ class LessonPresenter {
 
         HttpClient.get(LESSON_PATH, type, object : EntityCallback<List<Lesson>> {
             override fun onSuccess(entity: List<Lesson>) {
-
                 this@LessonPresenter.lessons = entity
                 activity.runOnUiThread { activity.showResult(lessons); }
 
