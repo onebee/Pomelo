@@ -16,8 +16,15 @@ import kotlin.random.Random
  *
  */
 class CodeView constructor(context: Context, attrs: AttributeSet?)  : androidx.appcompat.widget.AppCompatTextView(context, attrs) {
-
-    constructor(context: Context) : this(context, null)
+    private var codeList = arrayOf(
+            "Kotlin",
+            "android",
+            "java",
+            "https",
+            "okhttp",
+            "retrofit",
+            "tcp/ip"
+    )
 
     private var paint = Paint()
     // 调用了父类的构造器, 类名后面就不需要加括号了
@@ -34,17 +41,6 @@ class CodeView constructor(context: Context, attrs: AttributeSet?)  : androidx.a
         updateCode()
 
     }
-
-    private var codeList = arrayOf(
-        "Kotlin",
-        "android",
-        "java",
-        "https",
-        "okhttp",
-        "retrofit",
-        "tcp/ip"
-    )
-
 
     fun updateCode() {
         val random = Random.nextInt(codeList.size)

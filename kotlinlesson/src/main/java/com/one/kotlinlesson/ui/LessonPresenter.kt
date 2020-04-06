@@ -9,8 +9,7 @@ import com.one.kotlinlesson.utils.Utils
 /**
  * @author  diaokaibin@gmail.com on 2020/3/31.
  */
-class LessonPresenter {
-
+class LessonPresenter(private val activity: LessonActivity) {
 
     companion object {
         /**
@@ -19,14 +18,7 @@ class LessonPresenter {
         const val LESSON_PATH = "lessons"
     }
 
-    private val activity: LessonActivity
-
-    constructor(activity: LessonActivity) {
-        this.activity = activity
-    }
-
     private var lessons: List<Lesson> = ArrayList()
-
 
     private val type = object : TypeToken<List<Lesson>>() {}.type
 
@@ -36,13 +28,10 @@ class LessonPresenter {
             override fun onSuccess(entity: List<Lesson>) {
                 this@LessonPresenter.lessons = entity
                 activity.runOnUiThread { activity.showResult(lessons); }
-
             }
 
             override fun onFailure(message: String?) {
-
                 activity.runOnUiThread {     Utils.toash(message) }
-
             }
 
         })
@@ -50,14 +39,12 @@ class LessonPresenter {
 
     fun showPlayBack() {
         val playbackLessons = ArrayList<Lesson>()
-
-        for (lesson: Lesson in lessons) {
-            if (lesson.state == Lesson.State.PLAYBACK) {
-                playbackLessons.add(lesson)
-
+        lessons.forEach {
+            if (it.state == Lesson.State.PLAYBACK) {
+                playbackLessons.add(it)
             }
-            activity.showResult(playbackLessons)
         }
+        activity.showResult(playbackLessons)
     }
 
 }

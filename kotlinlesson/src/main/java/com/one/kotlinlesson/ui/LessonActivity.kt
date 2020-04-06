@@ -14,17 +14,14 @@ import com.one.kotlinlesson.entity.Lesson
 import kotlinx.android.synthetic.main.activity_lesson.*
 
 class LessonActivity : AppCompatActivity(), BaseView<LessonPresenter?>,
-    Toolbar.OnMenuItemClickListener {
-
+        Toolbar.OnMenuItemClickListener {
     private val presenter = LessonPresenter(this)
     private val lessonAdapter = LessonAdapter()
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_lesson)
-
         toolbar.inflateMenu(R.menu.menu_lesson)
         toolbar.setOnMenuItemClickListener(this)
-
         list.layoutManager = LinearLayoutManager(this)
         list.adapter = lessonAdapter
         list.addItemDecoration(DividerItemDecoration(this, LinearLayout.VERTICAL))
