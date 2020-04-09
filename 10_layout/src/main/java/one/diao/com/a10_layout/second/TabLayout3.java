@@ -12,11 +12,12 @@ import java.util.List;
 /**
  * @author diaokaibin@gmail.com on 2020/4/9.
  */
-public class TabLayout extends ViewGroup {
+public class TabLayout3 extends ViewGroup {
 
-    List<Rect> childrenBounds = new ArrayList<>();
 
-    public TabLayout(Context context, AttributeSet attrs) {
+    List<Rect> childBounds = new ArrayList<>();
+
+    public TabLayout3(Context context, AttributeSet attrs) {
         super(context, attrs);
     }
 
@@ -26,61 +27,61 @@ public class TabLayout extends ViewGroup {
 
         int widthUsed = 0;
         int heightUsed = 0;
-        int lineMaxHeight = 0;
-        int lineWidthUsed = 0;
 
-        int specMode = MeasureSpec.getMode(widthMeasureSpec);
+        int lineWidthUsed = 0;
+        int lineMaxHeight = 0;
+
+
         int specWidth = MeasureSpec.getSize(widthMeasureSpec);
+        int specMode = MeasureSpec.getMode(widthMeasureSpec);
+
 
         for (int i = 0; i < getChildCount(); i++) {
+
             View child = getChildAt(i);
-
-            /**
-             * widthUsed 给0  是意思是 宽度随便用,先不限制
-             */
             measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, heightUsed);
-//            measureChildWithMargins(child, widthMeasureSpec, widthUsed, heightMeasureSpec, heightUsed);
-
-
             if (specMode != MeasureSpec.UNSPECIFIED && lineWidthUsed + child.getMeasuredWidth() > specWidth) {
-                lineWidthUsed=0;
+                // 换行
+                lineWidthUsed = 0;
                 heightUsed += lineMaxHeight;
-                lineMaxHeight=0;
-                measureChildWithMargins(child,widthMeasureSpec,0,heightMeasureSpec,heightUsed);
+                lineMaxHeight = 0;
+                measureChildWithMargins(child, widthMeasureSpec, 0, heightMeasureSpec, heightUsed);
             }
 
             Rect childBound;
 
-            if (childrenBounds.size() <= i) {
+            if (childBounds.size() <= i) {
                 childBound = new Rect();
-                childrenBounds.add(childBound);
 
+                childBounds.add(childBound);
             } else {
-                childBound = childrenBounds.get(i);
+                childBound = childBounds.get(i);
             }
 
-
             childBound.set(lineWidthUsed, heightUsed, lineWidthUsed + child.getMeasuredWidth(),
-                    heightUsed + child.getMeasuredHeight());
-            lineWidthUsed += child.getMeasuredWidth();
-            widthUsed = Math.max(widthUsed,lineWidthUsed);
+                    heightUsed + child.getMeasuredHeight()
+            );
 
+            lineWidthUsed += child.getMeasuredWidth();
+            widthUsed = Math.max(widthUsed, lineWidthUsed);
             lineMaxHeight = Math.max(lineMaxHeight, child.getMeasuredHeight());
 
+
         }
-
-
         int width = widthUsed;
-        int height = heightUsed+ lineMaxHeight;
+        int height = heightUsed + lineMaxHeight;
         setMeasuredDimension(width, height);
     }
 
+
     @Override
     protected void onLayout(boolean changed, int l, int t, int r, int b) {
+
         for (int i = 0; i < getChildCount(); i++) {
             View child = getChildAt(i);
-            Rect childBound = childrenBounds.get(i);
-            child.layout(childBound.left, childBound.top, childBound.right, childBound.bottom);
+            Rect rect = childBounds.get(i);
+            child.layout(rect.left, rect.top, rect.right, rect.bottom);
+
         }
     }
 

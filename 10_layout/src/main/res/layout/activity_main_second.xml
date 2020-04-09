@@ -31,7 +31,7 @@
     <!--        />-->
 
 
-    <one.diao.com.a10_layout.second.TabLayout
+    <one.diao.com.a10_layout.second.TabLayout3
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -207,6 +207,6 @@
             android:text="澳门特别行政区" />
 
 
-    </one.diao.com.a10_layout.second.TabLayout>
+    </one.diao.com.a10_layout.second.TabLayout3>
 
 </LinearLayout>
