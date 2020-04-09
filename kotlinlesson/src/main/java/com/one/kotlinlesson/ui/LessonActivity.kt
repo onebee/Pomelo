@@ -11,6 +11,7 @@ import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.one.kotlinlesson.BaseView
 import com.one.kotlinlesson.R
 import com.one.kotlinlesson.entity.Lesson
+import com.one.kotlinlesson.utils.firstChild
 import kotlinx.android.synthetic.main.activity_lesson.*
 
 class LessonActivity : AppCompatActivity(), BaseView<LessonPresenter?>,
@@ -29,6 +30,7 @@ class LessonActivity : AppCompatActivity(), BaseView<LessonPresenter?>,
         swipe_refresh_layout.isRefreshing = true
         presenter.fetchData()
 
+        swipe_refresh_layout.firstChild
     }
 
 

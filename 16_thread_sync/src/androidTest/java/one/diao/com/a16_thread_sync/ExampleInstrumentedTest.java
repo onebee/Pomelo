@@ -19,7 +19,7 @@ public class ExampleInstrumentedTest {
     @Test
     public void useAppContext() {
         // Context of the app under test.
-        Context appContext = InstrumentationRegistry.getTargetContext();
+//        Context appContext = InstrumentationRegistry.getTargetContext();
 
         assertEquals("one.diao.com.a16_thread_sync.test", appContext.getPackageName());
     }

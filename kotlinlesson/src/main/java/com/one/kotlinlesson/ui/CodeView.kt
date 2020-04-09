@@ -15,7 +15,7 @@ import kotlin.random.Random
  * @author  diaokaibin@gmail.com on 2020/3/31.
  *
  */
-class CodeView constructor(context: Context, attrs: AttributeSet?)  : androidx.appcompat.widget.AppCompatTextView(context, attrs) {
+class CodeView constructor(context: Context, attrs: AttributeSet?=null)  : androidx.appcompat.widget.AppCompatTextView(context, attrs) {
     private var codeList = arrayOf(
             "Kotlin",
             "android",
@@ -37,7 +37,7 @@ class CodeView constructor(context: Context, attrs: AttributeSet?)  : androidx.a
         paint.isAntiAlias = true
         paint.style = Paint.Style.STROKE;
         paint.color = getContext().getColor(R.color.colorAccent)
-        paint.strokeWidth = dp2px(6f)
+        paint.strokeWidth = 6f.dp2px()
         updateCode()
 
     }

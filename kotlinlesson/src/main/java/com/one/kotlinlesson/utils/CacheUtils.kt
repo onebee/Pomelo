@@ -9,20 +9,18 @@ import com.one.kotlinlesson.R
  */
 object CacheUtils {
 
-    val context = BaseApplication.currentApplication()
+    val context = BaseApplication.currentApplication
     val sp = context.getSharedPreferences(
-        context.getString(R.string.app_name),
-        Context.MODE_PRIVATE
+            context.getString(R.string.app_name),
+            Context.MODE_PRIVATE
     )
 
+    fun save(key: String?, value: String?) = sp.edit().putString(key, value).apply()
 
-    fun save(key: String?, value: String?) {
-        sp.edit().putString(key, value).apply()
-    }
-
-    fun get(key: String?): String? {
-        return sp.getString(key, null)
-    }
+    /**
+     * 函数体只有一行代码的时候
+     */
+    fun get(key: String?) = sp.getString(key, null)
 
 
 }
