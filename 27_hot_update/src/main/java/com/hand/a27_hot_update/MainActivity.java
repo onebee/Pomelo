@@ -1,10 +1,13 @@
 package com.hand.a27_hot_update;
 
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AppCompatActivity;
+import dalvik.system.DexClassLoader;
+import dalvik.system.PathClassLoader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -38,9 +41,12 @@ public class MainActivity extends AppCompatActivity {
 
             }
         };
-
         orign.setOnClickListener(listener);
         hot.setOnClickListener(listener);
+
+        PathClassLoader pathClassLoader;
+
+        DexClassLoader dexClassLoader;
 
     }
 }

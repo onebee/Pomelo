@@ -31,6 +31,7 @@ class LessonActivity : AppCompatActivity(), BaseView<LessonPresenter?>,
         presenter.fetchData()
 
         swipe_refresh_layout.firstChild
+
     }
 
 

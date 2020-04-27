@@ -1,19 +1,28 @@
 package one.diao.com.a12_scalable.ui.mainactivity2;
 
-import androidx.lifecycle.ViewModelProviders;
 import android.os.Bundle;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.Fragment;
+import androidx.lifecycle.ViewModel;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import one.diao.com.a12_scalable.R;
 
 public class MainActivity2Fragment extends Fragment {
 
     private MainActivity2ViewModel mViewModel;
+    private ViewModelProvider.Factory mfa = new ViewModelProvider.Factory() {
+        @NonNull
+        @Override
+        public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
+            return null;
+        }
+    };
 
     public static MainActivity2Fragment newInstance() {
         return new MainActivity2Fragment();
@@ -30,6 +39,9 @@ public class MainActivity2Fragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = ViewModelProviders.of(this).get(MainActivity2ViewModel.class);
+
+
+        mViewModel = ViewModelProviders.of(this,mfa).get(MainActivity2ViewModel.class);
         // TODO: Use the ViewModel
     }
 

@@ -7,7 +7,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-   <one.diao.com.a12_scalable.ScaleImageView2
+   <one.diao.com.a12_scalable.ui.ScaleImageView3
        android:layout_width="match_parent"
        android:layout_height="match_parent"
 
