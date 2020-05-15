@@ -29,5 +29,10 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, Go2Activity::class.java))
 
         }
+
+        btn_set.setOnClickListener {
+        startActivity(Intent(this, ConstrainSetActivity::class.java))
+
+        }
     }
 }
