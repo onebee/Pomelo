@@ -10,9 +10,9 @@
 
     <Button
         android:id="@+id/btn_object"
-        android:text="object"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="object"
 
 
         />
@@ -26,18 +26,19 @@
         />
 
     <Button
-        android:text="go"
         android:id="@+id/btn_go"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:text="go"
 
 
         />
 
     <Button
+        android:id="@+id/btn_go2"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
+        android:text="go2"
 
         />
 

@@ -20,8 +20,13 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, Object2Activity::class.java))
         }
 
-        btn_go.setOnClickListener{
-        startActivity(Intent(this, GoActivity::class.java))
+        btn_go.setOnClickListener {
+            startActivity(Intent(this, GoActivity::class.java))
+
+        }
+
+        btn_go2.setOnClickListener {
+            startActivity(Intent(this, Go2Activity::class.java))
 
         }
     }
