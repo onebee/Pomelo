@@ -4,17 +4,24 @@
 
 
     <Transition
-        app:constraintSetEnd="@id/start"
-        app:constraintSetStart="@id/end">
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@id/start">
 
         <OnClick
             app:clickAction="toggle"
-            app:targetId="@+id/image_film_cover" />
+            app:targetId="@+id/fab_favourite" />
+
+
+        <OnSwipe
+            app:dragDirection="dragDown"
+            app:touchAnchorId="@+id/image_film_cover"
+            app:onTouchUp="autoCompleteToEnd"
+            />
 
     </Transition>
 
 
-    <ConstraintSet android:id="@+id/start"></ConstraintSet>
+    <ConstraintSet android:id="@+id/start" />
 
 
     <ConstraintSet android:id="@+id/end">
@@ -50,6 +57,8 @@
             app:fabSize="mini"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent" />
+
+
     </ConstraintSet>
 
 
