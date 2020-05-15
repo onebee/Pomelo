@@ -6,6 +6,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.transition.Fade
+import androidx.transition.Transition
 import androidx.transition.TransitionManager
 import kotlinx.android.synthetic.main.activity_constrain_set_start.*
 
@@ -28,6 +30,8 @@ class ConstrainSetActivity : AppCompatActivity(), View.OnClickListener {
     override fun onClick(v: View) {
 
         var root = v.parent as ConstraintLayout
+//        var fade = Fade()
+//        fade.duration= 13000
         TransitionManager.beginDelayedTransition(root)
 
         val set = ConstraintSet()

@@ -31,7 +31,12 @@ class MainActivity : AppCompatActivity() {
         }
 
         btn_set.setOnClickListener {
-        startActivity(Intent(this, ConstrainSetActivity::class.java))
+            startActivity(Intent(this, ConstrainSetActivity::class.java))
+
+        }
+
+        btn_motion.setOnClickListener {
+            startActivity(Intent(this, MotionActivity::class.java))
 
         }
     }
