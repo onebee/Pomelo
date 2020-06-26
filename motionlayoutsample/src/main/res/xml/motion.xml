@@ -15,7 +15,7 @@
         <OnSwipe
             app:dragDirection="dragDown"
             app:touchAnchorId="@+id/image_film_cover"
-            app:onTouchUp="autoCompleteToEnd"
+            app:onTouchUp="stop"
             />
 
     </Transition>

@@ -39,5 +39,9 @@ class MainActivity : AppCompatActivity() {
             startActivity(Intent(this, MotionActivity::class.java))
 
         }
+
+        btn_sample.setOnClickListener {
+            startActivity(Intent(this, SampleActivity::class.java))
+        }
     }
 }
